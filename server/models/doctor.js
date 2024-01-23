@@ -56,6 +56,9 @@ const doctorSchema = new Schema({
     type: Number,
     required: true,
   },
+  status:{
+    type:String
+  },
   shiftTiming: {
     type: String,
     required: true,
@@ -79,6 +82,7 @@ const sampleDoctor = {
   doctorUsername: "sarah_smith",
   password: "securepassword456",
   salary: 110000,
+  status:"permanent",
   shiftTiming: "10:00 AM - 6:00 PM",
 };
 
