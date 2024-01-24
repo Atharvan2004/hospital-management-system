@@ -1,9 +1,24 @@
 import express from "express"
 import { asyncErrorHandler } from "../middleware/asyncErrorHandler"
+import { findPatientByQuery } from "../utils/findPatient";
 
-const getPatient = asyncErrorHandler((req,res)=>{
+const searchPatients = asyncErrorHandler(async (req, res) => {
 
-    const query = req.body.query
-    
+    try {
+        const query = req.body.query;
+        const patientList = await findPatientByQuery(query).catch((err) => {
+            console.log(err)
+        });
+        res.status(201).json({
+            success: true,
+            patientList
+        })
+    }
+    catch (err) {
+        res.status(400).json({
+            success: false,
+            err
+        })
+    }
 
 })
