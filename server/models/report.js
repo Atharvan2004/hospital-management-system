@@ -1,7 +1,5 @@
 import { Schema, model } from "mongoose";
-import {conn} from "./conn.js"
 
-await conn();
 const medicalReportSchema = new Schema({
 
   patientID: {
@@ -53,25 +51,25 @@ const medicalReportSchema = new Schema({
 
 const MedicalReport = model("MedicalReport", medicalReportSchema);
 
-const sampleMedicalReport = {
-  patientID: "65af889ebd51bb4825b06d5b",
-  doctorID: "65af8fb0395615960b093f97",
-  reportDate: new Date(),
-  chiefComplaint: "Cough and Fever",
-  symptoms: ["Persistent cough", "high fever"],
-  tests: ["Blood test", "X-ray"],
-  diagnosis: "Upper respiratory tract infection",
-  medications: ["Combiflam", "Azithromycin"],
-  followUpInstructions: "Take medications as prescribed and follow up after one week",
-  treatmentDuration: "1 week",
-};
+// const sampleMedicalReport = {
+//   patientID: "65af889ebd51bb4825b06d5b",
+//   doctorID: "65af8fb0395615960b093f97",
+//   reportDate: new Date(),
+//   chiefComplaint: "Cough and Fever",
+//   symptoms: ["Persistent cough", "high fever"],
+//   tests: ["Blood test", "X-ray"],
+//   diagnosis: "Upper respiratory tract infection",
+//   medications: ["Combiflam", "Azithromycin"],
+//   followUpInstructions: "Take medications as prescribed and follow up after one week",
+//   treatmentDuration: "1 week",
+// };
 
-MedicalReport.insertMany(sampleMedicalReport)
-  .then((result) => {
-    console.log("Documents inserted:", result);
-  })
-  .catch((error) => {
-    console.error("Error inserting documents:", error);
-  });
+// MedicalReport.insertMany(sampleMedicalReport)
+//   .then((result) => {
+//     console.log("Documents inserted:", result);
+//   })
+//   .catch((error) => {
+//     console.error("Error inserting documents:", error);
+//   });
 
 export default MedicalReport;

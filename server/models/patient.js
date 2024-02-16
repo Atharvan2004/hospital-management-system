@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import { conn } from "./conn.js";
+import { Schema } from "mongoose";
 
-await conn();
 const patientSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -32,7 +31,7 @@ const patientSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  userid: {
+  userId: {
     type: String,
     required: true,
   },
@@ -44,15 +43,10 @@ const patientSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  reports: [
-    {
-      id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Report",
-      },
-      _id: false,
-    },
-  ],
+  reports: [{
+    type: Schema.Types.ObjectId,
+    ref: "MedicalReport",
+  }],
 });
 
 const Patient = mongoose.model("Patient", patientSchema);
@@ -67,7 +61,7 @@ const Patient = mongoose.model("Patient", patientSchema);
 //     },
 //     bloodGroup: "O+",
 //     sex: "Male",
-//     userid: "john123",
+//     userId: "john123",
 //     password: "securePassword123",
 //     reports: [],
 //   };

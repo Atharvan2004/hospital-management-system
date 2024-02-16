@@ -1,7 +1,5 @@
 import { Schema, model } from "mongoose";
-import { conn } from "./conn.js";
 
-await conn();
 
 const staffSchema = new Schema({
   name: {
@@ -29,7 +27,7 @@ const staffSchema = new Schema({
       type: String,
     },
   },
-  staffUserID: {
+  userID: {
     type: String,
     required: true,
   },
@@ -49,27 +47,27 @@ const staffSchema = new Schema({
 
 const Staff = model("Staff", staffSchema);
 
-const sampleStaffData = {
-  name: "Bob Smith",
-  address: "456 Oak Street, Cityville",
-  age: 32,
-  contact: {
-    phone: "123-456-7890",
-    email: "bob.smith@example.com",
-  },
-  staffUserID: "bob_staff",
-  password: "securepass456",
-  shiftTimings: "9:00 AM - 5:00 PM",
-  salary: 75000,
-  sex: "Male",
-};
+// const sampleStaffData = {
+//   name: "Bob Smith",
+//   address: "456 Oak Street, Cityville",
+//   age: 32,
+//   contact: {
+//     phone: "123-456-7890",
+//     email: "bob.smith@example.com",
+//   },
+//   userID: "bob_staff",
+//   password: "securepass456",
+//   shiftTimings: "9:00 AM - 5:00 PM",
+//   salary: 75000,
+//   sex: "Male",
+// };
 
-Staff.insertMany(sampleStaffData)
-  .then((result) => {
-    console.log("Documents inserted:", result);
-  })
-  .catch((error) => {
-    console.error("Error inserting documents:", error);
-  });
+// Staff.insertMany(sampleStaffData)
+//   .then((result) => {
+//     console.log("Documents inserted:", result);
+//   })
+//   .catch((error) => {
+//     console.error("Error inserting documents:", error);
+//   });
 
 export default Staff;

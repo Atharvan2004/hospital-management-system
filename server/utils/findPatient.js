@@ -1,4 +1,4 @@
-import Patient from "../models/patients.js";
+import Patient from "../models/patient.js";
 
 async function findPatientByQuery(query) {
   try {
