@@ -10,7 +10,7 @@ export default function Footer() {
         <li>
           <Typography
             as="a"
-            href="#"
+            href="about"
             color="blue-gray"
             className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
           >
