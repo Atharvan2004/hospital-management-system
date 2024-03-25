@@ -2,26 +2,27 @@ import Doctor from "../models/doctor.js";
 import Patient from "../models/patient.js";
 import MedicalReport from "../models/report.js";
 import { asyncErrorHandler } from "../middleware/asyncErrorHandler.js";
+import Appointment from "../models/appointment.js";
 
 const searchTreatedPatients = asyncErrorHandler(async (req, res) => {
   if (req.authenticated) {
-    if(req.user.role=="Doctor"){
+    if (req.user.role == "Doctor") {
       const doctorId = req.user.id;
       // const patientList = [];
       const doctor = await Doctor.findById(doctorId);
       const p = doctor.patientID.map(async (patientId) => {
         const patient = await Patient.findById(patientId);
-        return (patient);
+        return patient;
       });
-      const patientList = await Promise.all(p)
-  
+      const patientList = await Promise.all(p);
+
       res.status(201).json({
         patientList: patientList,
       });
-    }else{
+    } else {
       res.status(300).json({
-        success:"false",
-        message:"Not a doctor"
+        success: "false",
+        message: "Not a doctor",
       });
     }
   } else {
@@ -50,10 +51,10 @@ const createReport = asyncErrorHandler(async (req, res) => {
 
       const doctor = await Doctor.findById(req.user.id);
 
-      if (!doctor.patientID.includes(req.params.id)){
-        console.log(req.params.id)
+      if (!doctor.patientID.includes(req.params.id)) {
+        console.log(req.params.id);
         doctor.patientID.push(req.params.id);
-        await doctor.save()
+        await doctor.save();
       }
 
       await MedicalReport.insertMany(medicalReport)
@@ -92,6 +93,26 @@ const createReport = asyncErrorHandler(async (req, res) => {
   }
 });
 
+const viewAppointment = asyncErrorHandler(async (req, res) => {
 
+  if (req.authenticated && req.user.role == "Doctor") {
+    try {
+      const appointmentList = await Appointment.find({ doctorID: req.user.id });
+      res.status(201).json({
+        success: true,
+        data: appointmentList,
+      });
+    } catch (err) {
+      res.status(400).json({
+        success: "false",
+        err: err.message,
+      });
+    }
+  } else {
+    res.status(300).json({
+      message: "Please login as a Doctor",
+    });
+  }
+});
 
-export { searchTreatedPatients, createReport };
+export { searchTreatedPatients, createReport,viewAppointment };

@@ -19,6 +19,7 @@ const appointmentSchema = new Schema({
     ref: "Doctor",
   },
   time: String,
+  date:Date,
   status: {
     type: String,
     default: "Pending",
@@ -34,7 +35,8 @@ const Appointment = model("Appointment", appointmentSchema);
 //     email: "example@example.com", // Sample email
 //   },
 //   doctorID: "60f7890c6d9f1d40385c4d7b", // Sample doctor ID
-//   time: "2024-03-24T10:00:00", // Sample appointment time
+//   time: "10:00:00 am",
+//   date:"2024-05-11", // Sample appointment time
 //   status: "Pending", // Default status
 // };
 

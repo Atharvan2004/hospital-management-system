@@ -2,6 +2,7 @@ import { asyncErrorHandler } from "../middleware/asyncErrorHandler.js";
 import { findPatientByQuery } from "../utils/findPatient.js";
 import Patient from "../models/patient.js";
 import MedicalReport from "../models/report.js";
+import Appointment from "../models/appointment.js";
 
 const editPatient = asyncErrorHandler(async (req, res) => {
   if (req.authenticated) {
@@ -112,4 +113,45 @@ const getReportList = asyncErrorHandler(async (req, res) => {
   }
 });
 
-export { editPatient, getReport, getReportList };
+const bookAppointment = asyncErrorHandler(async (req, res) => {
+  if (req.authenticated) {
+    const patientId = req.user.id;
+    if (req.user.role == "Patient") {
+      try {
+        const doctorID = req.body.doctorID;
+        const appointment = {
+          patientID: patientId,
+          contact: {
+            phone: req.body.phone,
+            email: req.body.email,
+          },
+          doctorID: doctorID,
+          time: req.body.time,
+          status: "Pending",
+        };
+        Appointment.insertMany(appointment)
+          .then(() => {
+            console.log("Documents inserted", appointment);
+            res.json({
+              success: true,
+              message: "Appointment requested",
+              data: appointment,
+            });
+          })
+          .catch((err) => {
+            console.error(err);
+            res.status(400).json({ success: false, err: err.message });
+          });
+      } catch (err) {
+        console.error(err);
+        res.status(400).json({ success: false, err: err.message });
+      }
+    } else {
+      res
+        .status(400)
+        .json({ success: false, err: "Not a patient, please login" });
+    }
+  }
+});
+
+export { editPatient, getReport, getReportList,bookAppointment };
