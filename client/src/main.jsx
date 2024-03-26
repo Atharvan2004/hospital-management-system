@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider>
     <Provider store={store}>
     <App />
-  </Provider>
+    </Provider>
     </ThemeProvider>
   </React.StrictMode>,
 )
