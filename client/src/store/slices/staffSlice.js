@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const staffSlice = createSlice({
-  name: 'doctor',
+  name: 'staff',
   initialState,
   reducers: {
     
