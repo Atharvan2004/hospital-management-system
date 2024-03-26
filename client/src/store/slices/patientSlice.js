@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const patientSlice = createSlice({
-  name: 'doctor',
+  name: 'patient',
   initialState,
   reducers: {
     

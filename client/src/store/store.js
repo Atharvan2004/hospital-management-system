@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import  resultReducer  from './slices/searchResult'
+import rootReducer from './reducer'
 
 export const store = configureStore({
   reducer: {
-    result:resultReducer
+    result:rootReducer,
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
   },
 })
