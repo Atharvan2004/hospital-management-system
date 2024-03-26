@@ -4,6 +4,7 @@ import cors from "cors";
 import PRouter from "./routes/patientRoute.js";
 import ARouter from "./routes/adminRoute.js";
 import GRouter from "./routes/generalRoute.js";
+import SRouter from "./routes/staffRoute.js";
 import cookieParser from "cookie-parser";
 import { DRouter } from "./routes/doctorRoute.js";
 
@@ -21,4 +22,5 @@ app.use(PRouter);
 app.use(DRouter);
 app.use(ARouter);
 app.use(GRouter);
+app.use(SRouter);
 // app.use(express.static(path.join(__dirname,'/client/dist')));
