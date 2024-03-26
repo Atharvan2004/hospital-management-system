@@ -7,7 +7,7 @@ import {
 } from "@material-tailwind/react";
 
 
-const Dprofile = () => {
+const Pprofile = () => {
   return(
     <div className="text-center bg-brown-200 ">
       <Card color="transparent" shadow={false}>
@@ -17,7 +17,7 @@ const Dprofile = () => {
     <Typography color="gray" className="mt-1 font-normal">
       Specialisation in Medicine, Office 304
     </Typography>
-    <img src="\images\download.jpg" alt="Patient Image" className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2' />
+    <img src="\images\downloadp.png" alt="Patient Image" className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2' />
     <form className="mx-auto mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 bg-gray-300 rounded-xl">
       <div className="mb-1 flex flex-col gap-6 ">
         <Typography variant="h6" color="blue-gray" className="-mb-3">
@@ -95,4 +95,4 @@ const Dprofile = () => {
   );
 };
 
-export default Dprofile;
+export default Pprofile;

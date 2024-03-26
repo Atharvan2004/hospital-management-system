@@ -10,7 +10,8 @@ import SignUpForm from "./components/Signup/SignupPage";
 import LoginForm from "./components/Login/LoginPage";
 import PatientDashboard from "./pages/PatientDashboard";
 import SearchResult from "./components/SearchResult";
-import Patient from "./pages/Doctor/Profile";
+import Dprofile from "./pages/Doctor/Profile";
+import Pprofile from "./pages/Patient/Profile";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/patient" element={<PatientDashboard/>} />
-        <Route path="/doctor-profile" element={<Patient/>} />
+        <Route path="/doctor-profile" element={<Dprofile/>} />
+        <Route path="/patient-profile" element={<Pprofile/>} />
       </Routes>
       <Footer/>
     </BrowserRouter>
