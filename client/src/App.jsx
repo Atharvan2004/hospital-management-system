@@ -12,6 +12,8 @@ import PatientDashboard from "./pages/PatientDashboard";
 import SearchResult from "./components/SearchResult";
 import Dprofile from "./pages/Doctor/Profile";
 import Pprofile from "./pages/Patient/Profile";
+import MedicineForms from "./pages/Staff/MedicineForms";
+import Appointment from "./pages/Staff/Appointment";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="/patient" element={<PatientDashboard/>} />
         <Route path="/doctor-profile" element={<Dprofile/>} />
         <Route path="/patient-profile" element={<Pprofile/>} />
+        <Route path="/Medicine-form" element={<MedicineForms/>} />
+        <Route path="/Appointment" element={<Appointment/>} />
       </Routes>
       <Footer/>
     </BrowserRouter>
