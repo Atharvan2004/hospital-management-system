@@ -14,6 +14,8 @@ import Dprofile from "./pages/Doctor/Profile";
 import Pprofile from "./pages/Patient/Profile";
 import MedicineForms from "./pages/Staff/MedicineForms";
 import Appointment from "./pages/Staff/Appointment";
+import Report from "./pages/Doctor/Report";
+import Sprofile from "./pages/Staff/Profile";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
         <Route path="/patient-profile" element={<Pprofile/>} />
         <Route path="/Medicine-form" element={<MedicineForms/>} />
         <Route path="/Appointment" element={<Appointment/>} />
+        <Route path="/Report" element={<Report />} />
+        <Route path="/staff-profile" element={<Sprofile/>} />
       </Routes>
       <Footer/>
     </BrowserRouter>
