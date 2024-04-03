@@ -6,7 +6,7 @@ import Patient from "../models/patient.js";
 import Staff from "../models/staff.js";
 
 const registerDoctor = asyncErrorHandler(async (req, res, next) => {
-    const { name, address, age, sex, contact, specialisation, officeNo, userId, password, salary, status, shiftTiming } = req.body.formData;
+    const { name, address, age, sex, phone,email, specialisation, officeNo, userId, password, salary, status, shiftTiming } = req.body.formData;
 
     const hashedPassword = await encrypt(password);
 
@@ -15,7 +15,8 @@ const registerDoctor = asyncErrorHandler(async (req, res, next) => {
         address,
         age,
         sex,
-        contact,
+        phone,
+        email,
         specialisation,
         officeNo,
         patientID: [],
@@ -39,7 +40,7 @@ const registerDoctor = asyncErrorHandler(async (req, res, next) => {
 });
 
 const registerPatient = asyncErrorHandler(async (req, res, next) => {
-    const { name, address, age, contact, bloodGroup, sex, userId, password } = req.body.formData;
+    const { name, address, age, phone,email, bloodGroup, sex, userId, password } = req.body.formData;
 
     const hashedPassword = await encrypt(password);
 
@@ -47,7 +48,8 @@ const registerPatient = asyncErrorHandler(async (req, res, next) => {
         name,
         address,
         age,
-        contact,
+        phone,
+        email,
         bloodGroup,
         sex,
         userId,
@@ -68,7 +70,7 @@ const registerPatient = asyncErrorHandler(async (req, res, next) => {
 });
 
 const registerStaff = asyncErrorHandler(async (req, res, next) => {
-    const { name, address, age, contact, userID, password, shiftTimings, salary, sex } = req.body.formData;
+    const { name, address, age, phone,email, userId, password, shiftTimings, salary, sex } = req.body.formData;
 
     const hashedPassword = await encrypt(password);
 
@@ -76,8 +78,9 @@ const registerStaff = asyncErrorHandler(async (req, res, next) => {
         name,
         address,
         age,
-        contact,
-        userID,
+        phone,
+        email,
+        userId,
         password: hashedPassword,
         shiftTimings,
         salary,

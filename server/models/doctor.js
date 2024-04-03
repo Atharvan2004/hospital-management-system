@@ -17,14 +17,12 @@ const doctorSchema = new Schema({
     type: String,
     required: true,
   },
-  contact: {
-    phone: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-    },
+  phone: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
   },
   specialisation: {
     type: String,
@@ -46,8 +44,8 @@ const doctorSchema = new Schema({
     type: Number,
     required: true,
   },
-  status:{
-    type:String
+  status: {
+    type: String,
   },
   shiftTiming: {
     type: String,

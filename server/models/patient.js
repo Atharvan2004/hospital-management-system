@@ -14,7 +14,6 @@ const patientSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  contact: {
     phone: {
       type: String,
       required: true,
@@ -22,7 +21,6 @@ const patientSchema = new mongoose.Schema({
     email: {
       type: String,
     },
-  },
   bloodGroup: {
     type: String,
     required: true,

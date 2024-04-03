@@ -18,7 +18,6 @@ const staffSchema = new Schema({
     type: String,
     required: true,
   },
-  contact: {
     phone: {
       type: String,
       required: true,
@@ -26,8 +25,7 @@ const staffSchema = new Schema({
     email: {
       type: String,
     },
-  },
-  userID: {
+  userId: {
     type: String,
     required: true,
   },
