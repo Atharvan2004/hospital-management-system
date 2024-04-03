@@ -11,7 +11,7 @@ const doctorSlice = createSlice({
   initialState,
   reducers: {
 
-    signInStart: (state) => {
+      signInStart: (state) => {
         state.loading = true;
       },
       signInSuccess: (state, action) => {
@@ -63,6 +63,19 @@ const doctorSlice = createSlice({
   },
 });
 
-export const {} = doctorSlice.actions;
+export const {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+  updateUserFailure,
+  updateUserSuccess,
+  updateUserStart,
+  deleteUserFailure,
+  deleteUserSuccess,
+  deleteUserStart,
+  signOutUserFailure,
+  signOutUserSuccess,
+  signOutUserStart,
+} = doctorSlice.actions;
 
 export default doctorSlice.reducer;

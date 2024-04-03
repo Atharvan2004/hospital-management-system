@@ -11,13 +11,24 @@ import {
 import { Select, Option } from "@material-tailwind/react";
 import { useState } from "react";
 import axios from "axios"
- 
+import {signInSuccess , signInStart} from "@/store/slices/doctorSlice"
+import { useSelector,useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 const LoginForm = () => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('Doctor');
 
-  const handleSignIn = () => {
+  const dispatch= useDispatch();
+  const navigate= useNavigate();
+
+   
+
+  const handleSignIn = async () => {
+
+    // dispatch(signInStart());
+
     const data = {
       userId: userId,
       password: password,
@@ -30,17 +41,37 @@ const LoginForm = () => {
       }
     };
   
-    axios.post('http://localhost:3000/login', data, config)
-      .then(response => {
-        console.log('Response:', response.data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
+    // axios.post('http://localhost:3000/login', data, config)
+    //   .then(response => {
+    //     console.log('Response:', response.data);
+    //     dispatch(signInSuccess(response.data));
+
+        
+    //   })
+    //   .catch(error => {
+    //     console.error('Error:', error);
+    //   });
+    
+    const response = await axios.post("http://localhost:3000/login",data , config);
+
+    if(response.status != 200){
+      console.log("response error");
+    }
+
+    // console.log(response);
+
+    console.log(response.data.user);
+
+    dispatch(signInSuccess(response.data.user));
+
+    navigate('/')
+
   };
+
   const roleChange=(e)=>{
     setPassword(e.target.value)
   }
+
   return (
     <Card className="w-96 mx-auto mt-20">
       <CardHeader
@@ -103,6 +134,6 @@ const LoginForm = () => {
       </CardFooter>
     </Card>
   );
-};
+};  
 
 export default LoginForm;
