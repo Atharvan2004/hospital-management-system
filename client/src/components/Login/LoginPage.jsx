@@ -9,8 +9,38 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Select, Option } from "@material-tailwind/react";
+import { useState } from "react";
+import axios from "axios"
  
-export default function LoginForm() {
+const LoginForm = () => {
+  const [userId, setUserId] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('Doctor');
+
+  const handleSignIn = () => {
+    const data = {
+      userId: userId,
+      password: password,
+      role: role
+    };
+  
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+  
+    axios.post('http://localhost:3000/login', data, config)
+      .then(response => {
+        console.log('Response:', response.data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
+  const roleChange=(e)=>{
+    setPassword(e.target.value)
+  }
   return (
     <Card className="w-96 mx-auto mt-20">
       <CardHeader
@@ -23,21 +53,39 @@ export default function LoginForm() {
         </Typography>
       </CardHeader>
       <CardBody className="flex flex-col gap-4">
-        <Input label="Email" size="lg" />
-        <Input label="Password" size="lg" />
+        <Input 
+          label="User ID" 
+          size="lg" 
+          value={userId} 
+          onChange={(e) => setUserId(e.target.value)} 
+        />
+        <Input 
+          label="Password" 
+          type="password" 
+          size="lg" 
+          value={password} 
+          onChange={roleChange} 
+        />
         <div className="w-full">
-      <Select label="Select Role">
-        <Option>Doctor</Option>
-        <Option>Patient</Option>
-        <Option>Staff</Option>
-      </Select>
-    </div>
+          <Select 
+            label="Select Role" 
+            value={role} 
+            onChange={(e) => {
+              console.log(e)
+              setRole(e)}
+            } 
+          >
+            <Option value="Doctor">Doctor</Option>
+            <Option value="Patient">Patient</Option>
+            <Option value="Staff">Staff</Option>
+          </Select>
+        </div>
         <div className="-ml-2.5">
           <Checkbox label="Remember Me" />
         </div>
       </CardBody>
       <CardFooter className="pt-0">
-        <Button variant="gradient" fullWidth>
+        <Button variant="gradient" fullWidth onClick={handleSignIn}>
           Sign In
         </Button>
         <Typography variant="small" className="mt-6 flex justify-center">
@@ -55,4 +103,6 @@ export default function LoginForm() {
       </CardFooter>
     </Card>
   );
-}
+};
+
+export default LoginForm;
