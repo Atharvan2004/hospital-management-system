@@ -1,4 +1,4 @@
-import { findPatientByQuery } from "../utils/findPatient.js";
+import { findByQuery } from "../utils/findPatient.js";
 import { asyncErrorHandler } from "../middleware/asyncErrorHandler.js";
 import Patient from "../models/patient.js";
 import Doctor from "../models/doctor.js";
@@ -6,13 +6,15 @@ import Staff from "../models/staff.js";
 import { comparePass } from "../utils/encryption.js";
 import { generateToken } from "../utils/genToken.js";
 import mongoose, { mongo } from "mongoose";
+import Admin from "../models/admin.js";
 
-const models = [Patient, Doctor, Staff];
+const models = [Patient, Doctor, Staff, Admin];
 
 const searchPatients = asyncErrorHandler(async (req, res) => {
   try {
     const query = req.body.query;
-    const patientList = await findPatientByQuery(query).catch((err) => {
+    const model = req.body.model;
+    const patientList = await findByQuery(query,model).catch((err) => {
       console.log(err);
     });
     console.log(patientList);
@@ -75,7 +77,7 @@ const loginUser = asyncErrorHandler(async (req, res, next) => {
       next(err);
     });
     if (isCorrect) {
-      const token = await generateToken(user,role);
+      const token = await generateToken(user, role);
       res.cookie("token", token, {
         maxAge: 60 * 60 * 6 * 1000,
       });
@@ -86,6 +88,30 @@ const loginUser = asyncErrorHandler(async (req, res, next) => {
     }
   } else {
     res.status(400).json("Invalid role");
+  }
+});
+
+const loginAdmin = asyncErrorHandler(async (req, res, next) => {
+  const userId = req.body.userId;
+  const password = req.body.password;
+  const role = "Admin";
+
+  const user = await Admin.findOne({ userId: userId }).catch((e) => {
+    res.status(404).json("error  " + e);
+  });
+  if (!user) {
+    res.status(404).json("Admin not found");
+    return;
+  }
+  if (password === user.password) {
+    const token = await generateToken(user, role);
+    res.cookie("token", token, {
+      maxAge: 60 * 60 * 6 * 1000,
+    });
+    console.log(user);
+    res.status(200).json({ message: "Successfully logged in", user: user });
+  } else {
+    res.status(300).json({ message: "Incorrect password" });
   }
 });
 
@@ -118,4 +144,4 @@ const viewProfile = asyncErrorHandler(async (req, res) => {
   }
 });
 
-export { searchPatients, getPatient, loginUser, viewProfile };
+export { searchPatients, getPatient, loginUser, viewProfile, loginAdmin };

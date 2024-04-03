@@ -1,5 +1,4 @@
 import { asyncErrorHandler } from "../middleware/asyncErrorHandler.js";
-import { findPatientByQuery } from "../utils/findPatient.js";
 import Patient from "../models/patient.js";
 import MedicalReport from "../models/report.js";
 import Appointment from "../models/appointment.js";
