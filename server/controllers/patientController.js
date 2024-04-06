@@ -153,4 +153,25 @@ const bookAppointment = asyncErrorHandler(async (req, res) => {
   }
 });
 
-export { editPatient, getReport, getReportList,bookAppointment };
+const getAppointment = asyncErrorHandler(async (req, res) => {
+  if (req.authenticated) {
+    const patientId = req.user.id;
+    if (req.user.role == "Patient") {
+      try {
+        const appointmentList = await Appointment.find({ patientID: patientId })
+          .populate('doctorID', 'name') // populate the doctorID field with name
+          .exec(); // execute the query
+
+        res.status(200).json({ success: true, appointments: appointmentList });
+      } catch (err) {
+        console.error(err);
+        res.status(400).json({ success: false, err: err.message });
+      }
+    } else {
+      res.status(400).json({ success: false, err: "Not a patient, please login" });
+    }
+  }
+});
+
+
+export { editPatient, getReport, getReportList,bookAppointment,getAppointment };

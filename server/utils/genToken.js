@@ -1,8 +1,17 @@
 import jwt from "jsonwebtoken";
 
-async function generateToken(user,role) {
-  const token =await jwt.sign(
-    { userId: user.userId, id: user._id,role:role },
+async function generateToken(user, role) {
+  const token = await jwt.sign(
+    { userId: user.userId, id: user._id, role: role },
+    process.env.TOKEN_KEY,
+    { expiresIn: 1000 * 60 * 60 * 6 }
+  );
+  return token;
+}
+
+async function generateAdminToken(user, role) {
+  const token = await jwt.sign(
+    { userId: user.userId, id: user._id, role: "Admin" },
     process.env.TOKEN_KEY,
     { expiresIn: 1000 * 60 * 60 * 6 }
   );
@@ -16,8 +25,8 @@ async function validateToken(req, res, next) {
     res.status(404).json("user not authenticated");
   } else {
     try {
-      validToken =await jwt.verify(accessToken, process.env.TOKEN_KEY);
-      console.log(validToken)
+      validToken = await jwt.verify(accessToken, process.env.TOKEN_KEY);
+      console.log(validToken);
       if (validToken) {
         req.authenticated = true;
         req.user = validToken;
@@ -29,4 +38,28 @@ async function validateToken(req, res, next) {
     }
   }
 }
-export { generateToken, validateToken };
+
+async function validateAdmin(req, res, next) {
+  const accessToken = req.cookies["token"];
+  var validToken;
+  if (accessToken == null) {
+    res.status(404).json("user not authenticated");
+  } else {
+    try {
+      validToken = await jwt.verify(accessToken, process.env.TOKEN_KEY);
+      if (validToken.role == "Admin") {
+        console.log(validToken);
+        if (validToken) {
+          req.authenticated = true;
+          req.user = validToken;
+
+          next();
+        }
+      }
+    } catch (error) {
+      res.json("error " + error);
+    }
+  }
+}
+
+export { generateToken, generateAdminToken, validateToken, validateAdmin };

@@ -97,7 +97,9 @@ const viewAppointment = asyncErrorHandler(async (req, res) => {
 
   if (req.authenticated && req.user.role == "Doctor") {
     try {
-      const appointmentList = await Appointment.find({ doctorID: req.user.id });
+      const appointmentList = await Appointment.find({ doctorID: req.user.id })
+      .populate('patientID', 'name')
+      .exec();;
       res.status(201).json({
         success: true,
         data: appointmentList,
