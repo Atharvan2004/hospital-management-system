@@ -1,11 +1,11 @@
 import React from "react";
-import Layout from "@/components/Layout"; "../../components/Layout.jsx"
+import Layout from "@/components/PLayout"; "../../components/Layout.jsx"
 
 
 const PatientDashboard = () => {
   return (
     <Layout>
-      <h1>Home Page</h1>
+      hello
     </Layout>
   );
 };
