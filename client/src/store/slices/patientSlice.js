@@ -11,51 +11,51 @@ const patientSlice = createSlice({
   initialState,
   reducers: {
     
-    signInStart: (state) => {
+    patientsignInStart: (state) => {
       state.loading = true;
     },
-    signInSuccess: (state, action) => {
+    patientsignInSuccess: (state, action) => {
       state.currentUser = action.payload;
       state.loading = false;
       state.error = null;
     },
-    signInFailure: (state, action) => {
+    patientsignInFailure: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
-    updateUserStart: (state) => {
+    patientupdateUserStart: (state) => {
       state.loading = true;
     },
-    updateUserSuccess: (state, action) => {
+    patientupdateUserSuccess: (state, action) => {
       state.currentUser = action.payload;
       state.loading = false;
       state.error = null;
     },
-    updateUserFailure: (state, action) => {
+    patientupdateUserFailure: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
-    deleteUserStart: (state) => {
+    patientdeleteUserStart: (state) => {
       state.loading = true;
     },
-    deleteUserSuccess: (state) => {
+    patientdeleteUserSuccess: (state) => {
       state.currentUser = null;
       state.loading = false;
       state.error = null;
     },
-    deleteUserFailure: (state, action) => {
+    patientdeleteUserFailure: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
-    signOutUserStart: (state) => {
+    patientsignOutUserStart: (state) => {
       state.loading = true;
     },
-    signOutUserSuccess: (state) => {
+    patientsignOutUserSuccess: (state) => {
       state.currentUser = null;
       state.loading = false;
       state.error = null;
     },
-    signOutUserFailure: (state, action) => {
+    patientsignOutUserFailure: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
@@ -64,16 +64,16 @@ const patientSlice = createSlice({
 });
 
 export const {signInStart,
-  signInSuccess,
-  signInFailure,
-  updateUserFailure,
-  updateUserSuccess,
-  updateUserStart,
-  deleteUserFailure,
-  deleteUserSuccess,
-  deleteUserStart,
-  signOutUserFailure,
-  signOutUserSuccess,
-  signOutUserStart,} = patientSlice.actions;
+  patientsignInSuccess,
+  patientsignInFailure,
+  patientupdateUserFailure,
+  patientupdateUserSuccess,
+  patientupdateUserStart,
+  patientdeleteUserFailure,
+  patientdeleteUserSuccess,
+  patientdeleteUserStart,
+  patientsignOutUserFailure,
+  patientsignOutUserSuccess,
+  patientsignOutUserStart,} = patientSlice.actions;
 
 export default patientSlice.reducer;

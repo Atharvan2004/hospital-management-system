@@ -11,51 +11,51 @@ const doctorSlice = createSlice({
   initialState,
   reducers: {
 
-      signInStart: (state) => {
+      doctorsignInStart: (state) => {
         state.loading = true;
       },
-      signInSuccess: (state, action) => {
+      doctorsignInSuccess: (state, action) => {
         state.currentUser = action.payload;
         state.loading = false;
         state.error = null;
       },
-      signInFailure: (state, action) => {
+      doctorsignInFailure: (state, action) => {
         state.error = action.payload;
         state.loading = false;
       },
-      updateUserStart: (state) => {
+      doctorupdateUserStart: (state) => {
         state.loading = true;
       },
-      updateUserSuccess: (state, action) => {
+      doctorupdateUserSuccess: (state, action) => {
         state.currentUser = action.payload;
         state.loading = false;
         state.error = null;
       },
-      updateUserFailure: (state, action) => {
+      doctorupdateUserFailure: (state, action) => {
         state.error = action.payload;
         state.loading = false;
       },
-      deleteUserStart: (state) => {
+      doctordeleteUserStart: (state) => {
         state.loading = true;
       },
-      deleteUserSuccess: (state) => {
+      doctordeleteUserSuccess: (state) => {
         state.currentUser = null;
         state.loading = false;
         state.error = null;
       },
-      deleteUserFailure: (state, action) => {
+      doctordeleteUserFailure: (state, action) => {
         state.error = action.payload;
         state.loading = false;
       },
-      signOutUserStart: (state) => {
+      doctorsignOutUserStart: (state) => {
         state.loading = true;
       },
-      signOutUserSuccess: (state) => {
+      doctorsignOutUserSuccess: (state) => {
         state.currentUser = null;
         state.loading = false;
         state.error = null;
       },
-      signOutUserFailure: (state, action) => {
+      doctorsignOutUserFailure: (state, action) => {
         state.error = action.payload;
         state.loading = false;
       },
@@ -64,18 +64,18 @@ const doctorSlice = createSlice({
 });
 
 export const {
-  signInStart,
-  signInSuccess,
-  signInFailure,
-  updateUserFailure,
-  updateUserSuccess,
-  updateUserStart,
-  deleteUserFailure,
-  deleteUserSuccess,
-  deleteUserStart,
-  signOutUserFailure,
-  signOutUserSuccess,
-  signOutUserStart,
+  doctorsignInStart,
+  doctorsignInSuccess,
+  doctorsignInFailure,
+  doctorupdateUserFailure,
+  doctorupdateUserSuccess,
+  doctorupdateUserStart,
+  doctordeleteUserFailure,
+  doctordeleteUserSuccess,
+  doctordeleteUserStart,
+  doctorsignOutUserFailure,
+  doctorsignOutUserSuccess,
+  doctorsignOutUserStart,
 } = doctorSlice.actions;
 
 export default doctorSlice.reducer;

@@ -10,67 +10,81 @@ import {
 } from "@material-tailwind/react";
 import { Select, Option } from "@material-tailwind/react";
 import { useState } from "react";
-import axios from "axios"
-import {signInSuccess , signInStart} from "@/store/slices/doctorSlice"
-import { useSelector,useDispatch } from "react-redux";
+import axios from "axios";
+import { doctorsignInSuccess } from "@/store/slices/doctorSlice.js";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { patientsignInSuccess } from "@/store/slices/patientSlice";
+import { staffsignInSuccess } from "@/store/slices/staffSlice";
 
 const LoginForm = () => {
-  const [userId, setUserId] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState('Doctor');
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("Doctor");
 
-  const dispatch= useDispatch();
-  const navigate= useNavigate();
-
-   
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSignIn = async () => {
-
     // dispatch(signInStart());
 
     const data = {
       userId: userId,
       password: password,
-      role: role
+      role: role,
     };
-  
+
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     };
-  
+
     // axios.post('http://localhost:3000/login', data, config)
     //   .then(response => {
     //     console.log('Response:', response.data);
     //     dispatch(signInSuccess(response.data));
 
-        
     //   })
     //   .catch(error => {
     //     console.error('Error:', error);
     //   });
-    
-    const response = await axios.post("http://localhost:3000/login",data , config);
 
-    if(response.status != 200){
+    const response = await axios.post(
+      "http://localhost:3000/login",
+      data,
+      config
+    );
+
+    if (response.status != 200) {
       console.log("response error");
     }
 
     // console.log(response);
 
     console.log(response.data.user);
-
-    dispatch(signInSuccess(response.data.user));
-
-    navigate('/')
-
+    switch (role) {
+      case "Doctor":
+        dispatch(doctorsignInSuccess(response.data.user));
+        navigate("/doctor-dash");
+        break;
+      case "Patient":
+        dispatch(patientsignInSuccess(response.data.user));
+        navigate("/patient-dash");
+        break;
+      case "Staff":
+        dispatch(staffsignInSuccess(response.data.user));
+        navigate("/staff-dash");
+        break;
+      default:
+        navigate('/')
+        break;
+    }
   };
 
-  const roleChange=(e)=>{
-    setPassword(e.target.value)
-  }
+  const roleChange = (e) => {
+    setPassword(e.target.value);
+  };
 
   return (
     <Card className="w-96 mx-auto mt-20">
@@ -84,27 +98,27 @@ const LoginForm = () => {
         </Typography>
       </CardHeader>
       <CardBody className="flex flex-col gap-4">
-        <Input 
-          label="User ID" 
-          size="lg" 
-          value={userId} 
-          onChange={(e) => setUserId(e.target.value)} 
+        <Input
+          label="User ID"
+          size="lg"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
         />
-        <Input 
-          label="Password" 
-          type="password" 
-          size="lg" 
-          value={password} 
-          onChange={roleChange} 
+        <Input
+          label="Password"
+          type="password"
+          size="lg"
+          value={password}
+          onChange={roleChange}
         />
         <div className="w-full">
-          <Select 
-            label="Select Role" 
-            value={role} 
+          <Select
+            label="Select Role"
+            value={role}
             onChange={(e) => {
-              console.log(e)
-              setRole(e)}
-            } 
+              console.log(e);
+              setRole(e);
+            }}
           >
             <Option value="Doctor">Doctor</Option>
             <Option value="Patient">Patient</Option>
@@ -134,6 +148,6 @@ const LoginForm = () => {
       </CardFooter>
     </Card>
   );
-};  
+};
 
 export default LoginForm;

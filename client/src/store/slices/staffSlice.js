@@ -10,51 +10,51 @@ const staffSlice = createSlice({
   name: 'staff',
   initialState,
   reducers: {
-    signInStart: (state) => {
+    staffsignInStart: (state) => {
       state.loading = true;
     },
-    signInSuccess: (state, action) => {
+    staffsignInSuccess: (state, action) => {
       state.currentUser = action.payload;
       state.loading = false;
       state.error = null;
     },
-    signInFailure: (state, action) => {
+    staffsignInFailure: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
-    updateUserStart: (state) => {
+    staffupdateUserStart: (state) => {
       state.loading = true;
     },
-    updateUserSuccess: (state, action) => {
+    staffupdateUserSuccess: (state, action) => {
       state.currentUser = action.payload;
       state.loading = false;
       state.error = null;
     },
-    updateUserFailure: (state, action) => {
+    staffupdateUserFailure: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
-    deleteUserStart: (state) => {
+    staffdeleteUserStart: (state) => {
       state.loading = true;
     },
-    deleteUserSuccess: (state) => {
+    staffdeleteUserSuccess: (state) => {
       state.currentUser = null;
       state.loading = false;
       state.error = null;
     },
-    deleteUserFailure: (state, action) => {
+    staffdeleteUserFailure: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
-    signOutUserStart: (state) => {
+    staffsignOutUserStart: (state) => {
       state.loading = true;
     },
-    signOutUserSuccess: (state) => {
+    staffsignOutUserSuccess: (state) => {
       state.currentUser = null;
       state.loading = false;
       state.error = null;
     },
-    signOutUserFailure: (state, action) => {
+    staffsignOutUserFailure: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
@@ -62,16 +62,16 @@ const staffSlice = createSlice({
 });
 
 export const {
-  signInSuccess,
-  signInFailure,
-  updateUserFailure,
-  updateUserSuccess,
-  updateUserStart,
-  deleteUserFailure,
-  deleteUserSuccess,
-  deleteUserStart,
-  signOutUserFailure,
-  signOutUserSuccess,
-  signOutUserStart,} = staffSlice.actions;
+  staffsignInSuccess,
+  staffsignInFailure,
+  staffupdateUserFailure,
+  staffupdateUserSuccess,
+  staffupdateUserStart,
+  staffdeleteUserFailure,
+  staffdeleteUserSuccess,
+  staffdeleteUserStart,
+  staffsignOutUserFailure,
+  staffsignOutUserSuccess,
+  staffsignOutUserStart,} = staffSlice.actions;
 
 export default staffSlice.reducer;

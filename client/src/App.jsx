@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SignUpForm from "./components/Signup/SignupPage";
 import LoginForm from "./components/Login/LoginPage";
-import PatientDashboard from "./pages/PatientDashboard";
+import PatientDashboard from "./pages/Dashboard.jsx/PatientDashboard";
 import SearchResult from "./components/SearchResult";
 import Dprofile from "./pages/Doctor/Profile";
 import Pprofile from "./pages/Patient/Profile";
@@ -16,6 +16,8 @@ import MedicineForms from "./pages/Staff/MedicineForms";
 import Appointment from "./pages/Staff/Appointment";
 import Report from "./pages/Doctor/Report";
 import Sprofile from "./pages/Staff/Profile";
+import DoctorDashboard from "./pages/Dashboard.jsx/DoctorDashboard";
+import StaffDashboard from "./pages/Dashboard.jsx/StaffDashboard";
 
 function App() {
   return (
@@ -36,6 +38,9 @@ function App() {
         <Route path="/Appointment" element={<Appointment/>} />
         <Route path="/Report" element={<Report />} />
         <Route path="/staff-profile" element={<Sprofile/>} />
+        <Route path="/doctor-dash" element={<DoctorDashboard/>} />
+        <Route path="/patient-dash" element={<PatientDashboard/>} />
+        <Route path="/staff-dash" element={<StaffDashboard/>} />
       </Routes>
       <Footer/>
     </BrowserRouter>
