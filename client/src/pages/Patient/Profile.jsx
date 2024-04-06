@@ -9,7 +9,7 @@ import {
 
 const Pprofile = () => {
   return(
-    <div className="text-center bg-brown-200 ">
+    <div className="text-center bg-blue-400 ">
       <Card color="transparent" shadow={false}>
     <Typography variant="h4" color="blue-gray">
       Profile

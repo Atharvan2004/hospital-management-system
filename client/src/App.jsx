@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SignUpForm from "./components/Signup/SignupPage";
 import LoginForm from "./components/Login/LoginPage";
-import PatientDashboard from "./pages/Dashboard.jsx/PatientDashboard";
+import PatientDashboard from "./pages/Patient/PatientDashboard";
 import SearchResult from "./components/SearchResult";
 import Dprofile from "./pages/Doctor/Profile";
 import Pprofile from "./pages/Patient/Profile";
