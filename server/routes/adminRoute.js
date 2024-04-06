@@ -4,7 +4,7 @@ import { validateToken } from "../utils/genToken.js"
 
 const ARouter = express.Router()
 
-ARouter.route("/registerD").post(validateToken,registerDoctor)  //done
+ARouter.route("/registerD").post(validateToken,registerDoctor)  //done   //here validate token is
 ARouter.route("/registerS").post(validateToken,registerStaff)     //done
 ARouter.route("/registerP").post(validateToken,registerPatient)   //done
 
