@@ -1,5 +1,6 @@
 import { asyncErrorHandler } from "../middleware/asyncErrorHandler.js";
 import Patient from "../models/patient.js";
+import Doctor from "../models/doctor.js"
 import MedicalReport from "../models/report.js";
 import Appointment from "../models/appointment.js";
 
@@ -158,20 +159,30 @@ const getAppointment = asyncErrorHandler(async (req, res) => {
     const patientId = req.user.id;
     if (req.user.role == "Patient") {
       try {
-        const appointmentList = await Appointment.find({ patientID: patientId })
-          .populate('doctorID', 'name') // populate the doctorID field with name
-          .exec(); // execute the query
+        
+        const appointmentList = await Appointment.find({patientID:patientId})
+        .then(()=>{
+          res.status(400).json({ success: true, data : appointmentList});
+        })
+          .catch((err) => {
+            console.error(err);
+            res.status(400).json({ success: false, err: err.message });
+          });
 
-        res.status(200).json({ success: true, appointments: appointmentList });
+        appointmentList.forEach(async(element )=> {
+          const doctor =await Doctor.findById(element.doctorID);
+          appointmentList
+        });
       } catch (err) {
         console.error(err);
         res.status(400).json({ success: false, err: err.message });
       }
     } else {
-      res.status(400).json({ success: false, err: "Not a patient, please login" });
+      res
+        .status(400)
+        .json({ success: false, err: "Not a patient, please login" });
     }
   }
 });
-
 
 export { editPatient, getReport, getReportList,bookAppointment,getAppointment };
