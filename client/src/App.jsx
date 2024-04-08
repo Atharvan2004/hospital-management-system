@@ -16,7 +16,7 @@ import MedicineForms from "./pages/Staff/MedicineForms";
 import Appointment from "./pages/Staff/Appointment";
 import Report from "./pages/Doctor/Report";
 import Sprofile from "./pages/Staff/Profile";
-import DoctorDashboard from "./pages/Dashboard.jsx/DoctorDashboard";
+import DoctorDashboard from "./pages/Doctor/DoctorDashboard";
 import StaffDashboard from "./pages/Dashboard.jsx/StaffDashboard";
 
 function App() {

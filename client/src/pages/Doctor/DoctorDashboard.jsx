@@ -1,7 +1,9 @@
+import DLayout from "../../components/DLayout"
+
 function DoctorDashboard() {
     return (  
         <>
-        d
+        <DLayout/>
         </>
     );
 }

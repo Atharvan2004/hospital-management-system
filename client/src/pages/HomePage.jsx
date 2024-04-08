@@ -14,7 +14,7 @@ const HomePage = () => {
       <SearchBar />
       <div className="w-3/5 mx-auto mt-12">
         <Table />
-         <div>{currentUser.age}</div> 
+         <div>{currentUser&&currentUser.age}</div> 
       </div>
     </div>
   );
