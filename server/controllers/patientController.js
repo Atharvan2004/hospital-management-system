@@ -160,14 +160,13 @@ const getAppointment = asyncErrorHandler(async (req, res) => {
     if (req.user.role == "Patient") {
       try {
         
-        const appointmentList = await Appointment.find({patientID:patientId})
-        .then(()=>{
-          res.status(400).json({ success: true, data : appointmentList});
-        })
-          .catch((err) => {
-            console.error(err);
-            res.status(400).json({ success: false, err: err.message });
-          });
+      const appointmentList = await Appointment.find({ patientID: req.user.id })
+      .populate('doctorID', 'name')
+      .exec();;
+      res.status(201).json({
+        success: true,
+        data: appointmentList,
+      });
 
         appointmentList.forEach(async(element )=> {
           const doctor =await Doctor.findById(element.doctorID);
