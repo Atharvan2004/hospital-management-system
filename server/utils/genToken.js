@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import localStorage from "localStorage"
 
 async function generateToken(user, role) {
   const token = await jwt.sign(
@@ -6,6 +7,7 @@ async function generateToken(user, role) {
     process.env.TOKEN_KEY,
     { expiresIn: 1000 * 60 * 60 * 6 }
   );
+  console.log(token+" as")
   return token;
 }
 
@@ -19,10 +21,12 @@ async function generateAdminToken(user, role) {
 }
 
 async function validateToken(req, res, next) {
-  const accessToken = req.cookies["token"];
+  console.log(JSON.stringify(req.cookies))
+  const accessToken = req.body.token;
+  console.log(accessToken+" atoken")
   var validToken;
   if (accessToken == null) {
-    res.status(404).json("user not authenticated");
+    res.status(400).json("user not authenticated");
   } else {
     try {
       validToken = await jwt.verify(accessToken, process.env.TOKEN_KEY);

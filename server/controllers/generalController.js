@@ -14,7 +14,7 @@ const searchPatients = asyncErrorHandler(async (req, res) => {
   try {
     const query = req.body.query;
     const model = req.body.model;
-    const patientList = await findByQuery(query,model).catch((err) => {
+    const patientList = await findByQuery(query, model).catch((err) => {
       console.log(err);
     });
     console.log(patientList);
@@ -64,6 +64,7 @@ const loginUser = asyncErrorHandler(async (req, res, next) => {
   const password = req.body.password;
   const role = req.body.role;
   const model = mongoose.model(role);
+  console.log("hi");
   console.log(model);
   if (model) {
     const user = await model.findOne({ userId: userId });
@@ -78,11 +79,11 @@ const loginUser = asyncErrorHandler(async (req, res, next) => {
     });
     if (isCorrect) {
       const token = await generateToken(user, role);
-      res.cookie("token", token, {
-        maxAge: 60 * 60 * 6 * 1000,
-      });
-      console.log(user);
-      res.status(200).json({ message: "Successfully logged in", user: user });
+      // console.log("token :: "+token)
+
+      res
+        .status(200)
+        .json({ message: "Successfully logged in", user: user, token: token });
     } else {
       res.status(400).json("Incorrect Password");
     }
@@ -144,4 +145,36 @@ const viewProfile = asyncErrorHandler(async (req, res) => {
   }
 });
 
-export { searchPatients, getPatient, loginUser, viewProfile, loginAdmin };
+const getDoctors = asyncErrorHandler(async (req, res) => {
+  try {
+    const doctorList = await Doctor.find().catch((err) => {
+      console.log(err);
+    });
+    console.log(doctorList);
+    if (doctorList != null) {
+      res.status(201).json({
+        success: true,
+        doctorList,
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: "No patients found",
+      });
+    }
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      err,
+    });
+  }
+});
+
+export {
+  searchPatients,
+  getPatient,
+  loginUser,
+  viewProfile,
+  loginAdmin,
+  getDoctors,
+};

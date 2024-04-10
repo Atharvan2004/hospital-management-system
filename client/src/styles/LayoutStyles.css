@@ -24,13 +24,13 @@
   .header {
     height: 10vh;
     margin-bottom: 0px;
-    box-shadow: 0 0 2px gray;
+    box-shadow: 0 0 0px gray;
     background-color: white;
   }
   .body {
     height: 85vh;
     margin-bottom: 20px;
-    box-shadow: 0 0 2px gray;
+    box-shadow: 0 0 0px gray;
     background-color: white;
   }
 
