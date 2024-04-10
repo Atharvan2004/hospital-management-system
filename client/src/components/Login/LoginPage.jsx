@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { patientsignInSuccess } from "@/store/slices/patientSlice";
 import { staffsignInSuccess } from "@/store/slices/staffSlice";
+import localStorage from "redux-persist/es/storage";
 
 const LoginForm = () => {
   const [userId, setUserId] = useState("");
@@ -55,6 +56,9 @@ const LoginForm = () => {
       data,
       config
     );
+    // console.log(JSON.stringify(response.data.token)+" a")
+    localStorage.setItem("token",response.data.token)
+    // console.log(localStorage.getItem("token")+" token:::::::")
 
     if (response.status != 200) {
       console.log("response error");

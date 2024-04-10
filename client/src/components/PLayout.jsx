@@ -36,6 +36,7 @@ const Layout = ({children}) => {
             <div className="flex gap-5 mb-0">
               <div className="text-2xl font-bold text-center text-700  ">
                 Welcome!!
+                
               </div>
 
               <div className="text-2xl font-bold text-center text-gray-700">
