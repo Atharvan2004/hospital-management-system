@@ -5,16 +5,16 @@ import { useSelector } from "react-redux";
 
 const HomePage = () => {
 
-  const { currentUser, loading, error } = useSelector((state) => state.doctor);
+  // const { currentUser, loading, error } = useSelector((state) => state.doctor);
   
-  
+  // console.log(currentUser.age);
 
   return (
     <div>
       <SearchBar />
       <div className="w-3/5 mx-auto mt-12">
         <Table />
-         <div>{currentUser.age}</div> 
+         {/* <div>{currentUser.age}</div>  */}
       </div>
     </div>
   );
