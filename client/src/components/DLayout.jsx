@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../styles/LayoutStyles.css";
-import { PatientMenu } from "@/Data/SideBarMenu";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button } from "@material-tailwind/react";
@@ -18,10 +17,27 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
+
 const Layout = ({ children }) => {
   const { currentUser, loading, error } = useSelector((state) => state.doctor);
+  const DoctorMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "fa-solid fa-house",
+    },
+    {
+      name: "Apply Doctor",
+      path: "/apply-doctor",
+      icon: "fa-solid fa-user-doctor",
+    },
+    {
+      name: "Profile",
+      path: `/doctor-profile/${currentUser._id}`,
+      icon: "fa-solid fa-user",
+    },
+  ];
   const [appointments, setAppointments] = useState([]);
-  const [doctor, setDoctor] = useState("");
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -46,9 +62,6 @@ const Layout = ({ children }) => {
     }
     fetchData();
   }, []);
-  const noOfPatientsTreated = currentUser.patientID.map(()=>{
-
-  })
   const location = useLocation();
 
   return (
@@ -57,7 +70,7 @@ const Layout = ({ children }) => {
         <div className="layout">
           <div className="sidebar">
             <div className="menu">
-              {PatientMenu.map((menu) => {
+              {DoctorMenu.map((menu) => {
                 const isActive = location.pathname === menu.path;
                 return (
                   <div key={menu.path} className={`menu-item`}>
