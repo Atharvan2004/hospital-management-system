@@ -117,4 +117,69 @@ const viewAppointment = asyncErrorHandler(async (req, res) => {
   }
 });
 
+const editDoctor = asyncErrorHandler(async (req, res) => {
+  if (req.authenticated) {
+    try {
+      const patientId = req.params.id;
+      const updatedPatientData = {};
+      if (req.body.formData.name) {
+        updatedPatientData.name = req.body.formData.name;
+      }
+      if (req.body.formData.address) {
+        updatedPatientData.address = req.body.formData.address;
+      }
+      if (req.body.formData.age) {
+        updatedPatientData.age = req.body.formData.age;
+      }
+      if (req.body.formData.phone) {
+        // updatedPatientData.contact = updatedPatientData.contact || {};
+        updatedPatientData.contact.phone = req.body.formData.phone;
+      }
+      if (req.body.formData.email) {
+        // updatedPatientData.contact.email = updatedPatientData.contact || {};
+        updatedPatientData.contact.email = req.body.formData.email;
+      }
+      if (req.body.formData.bloodGroup) {
+        updatedPatientData.bloodGroup = req.body.formData.bloodGroup;
+      }
+      if (req.body.formData.sex) {
+        updatedPatientData.sex = req.body.formData.sex;
+      }
+      if (req.body.formData.userid) {
+        updatedPatientData.userid = req.body.formData.userid;
+      }
+      if (req.body.formData.password) {
+        updatedPatientData.password = req.body.formData.password;
+      }
+      const updatedPatient = await Patient.findOneAndUpdate(
+        { _id: patientId },
+        { $set: updatedPatientData },
+        { new: true }
+      ).catch((err) => {
+        console.error(err);
+        res.status(400).json({ success: false, err: err.message });
+      });
+
+      if (!updatedPatient) {
+        return res
+          .status(404)
+          .json({ success: false, message: "Patient not found" });
+      }
+
+      res.json({
+        success: true,
+        message: "Patient data updated",
+        data: updatedPatient,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(400).json({ success: false, err: err.message });
+    }
+  } else {
+    res.status(300).json({
+      message: "Not authenticated, please login",
+    });
+  }
+});
+
 export { searchTreatedPatients, createReport,viewAppointment };
