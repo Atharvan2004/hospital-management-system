@@ -30,6 +30,8 @@ const PatientDashboard = () => {
   const [doctors,setDoctors]=useState([]);
   const navigate = useNavigate();
 
+  
+
   const fetchAppointmets = async()=>{
     try {
       const response = await axios.post(
@@ -85,6 +87,14 @@ const PatientDashboard = () => {
     fetchDoctors();
   },[]);
 
+  const navigateToReport = (reportId) => {
+    
+    console.log(`Navigating to report with ID: ${reportId}`);
+    navigate(`/report-display/${reportId}`)
+    
+  };
+  
+
   
   return (
     <Layout>
@@ -126,7 +136,7 @@ const PatientDashboard = () => {
                     {reports.map((report, index) => {
                       
                       return (
-                        <ListItem key={index}>
+                        <ListItem key={index} Button onClick={() => navigateToReport(report._id)}>
                           <ListItemPrefix>{index + 1}.</ListItemPrefix>
                           <div>
                             <Typography variant="h6" color="blue-gray">
