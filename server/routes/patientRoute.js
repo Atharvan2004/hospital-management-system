@@ -7,7 +7,7 @@ const PRouter = express.Router()
 PRouter.route("/editPatient/:id").post(validateToken, editPatient)   //done
 PRouter.route("/getReport/:id").post(validateToken, getReport)   //done
 PRouter.route("/getReports").post(validateToken,getReportList)  //done
-PRouter.route("/bookAppointment").post(validateToken,bookAppointment)  //done
+PRouter.route("/bookAppointment/:id").post(validateToken,bookAppointment)  //done
 PRouter.route("/getAppointment").post(validateToken,getAppointment)  //done
 
 export default PRouter

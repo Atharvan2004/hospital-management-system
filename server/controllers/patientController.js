@@ -118,15 +118,18 @@ const bookAppointment = asyncErrorHandler(async (req, res) => {
     const patientId = req.user.id;
     if (req.user.role == "Patient") {
       try {
-        const doctorID = req.body.doctorID;
+        const doctorID = req.params.id;
+        console.log("priniting params")
+        console.log(req.params.id)
         const appointment = {
           patientID: patientId,
           contact: {
-            phone: req.body.phone,
-            email: req.body.email,
+            phone: req.body.contact.phone,
+            email: req.body.contact.email,
           },
           doctorID: doctorID,
           time: req.body.time,
+          date:req.body.date,
           status: "Pending",
         };
         Appointment.insertMany(appointment)
