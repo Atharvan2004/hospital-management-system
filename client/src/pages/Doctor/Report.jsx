@@ -5,12 +5,16 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
+import { useParams } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 function Report() {
+  const {id}= useParams()
+  const { currentUser, loading, error } = useSelector((state) => state.doctor);
   const [reportDetails, setReportDetails] = useState({
-    patientID:'',
-      doctorID:'',
-      reportDate:'',
+    patientID:id,
+      doctorID:currentUser._id,
+     
       chiefComplaint:"",
       symptoms:'',
       tests:'',
@@ -34,9 +38,9 @@ function Report() {
     console.log('Form submitted:', reportDetails);
     // Reset form fields
     setReportDetails({
-      patientID:'',
-      doctorID:'',
-      reportDate:'',
+      patientID:id,
+      doctorID:currentUser._id,
+      
       chiefComplaint:"",
       symptoms:'',
       tests:'',
@@ -51,7 +55,7 @@ function Report() {
     <Card
       color="transparent"
       shadow={false}
-      className="mx-auto w-full border mt-4 py-3 mb-40"
+      className="mx-auto w-3/6 border mt-4 py-3 mb-40"
     >
       <Typography variant="h4" color="blue-gray" className="mx-auto">
         Patient Report
@@ -67,6 +71,7 @@ function Report() {
           <Input
             size="lg"
             placeholder="Patient ID"
+            disabled
             value={reportDetails.patientID}
             onChange={handleChange}
             name="patientID"
@@ -75,26 +80,14 @@ function Report() {
               className: "before:content-none after:content-none",
             }}
           />
-          {/* <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Patient Name
-          </Typography>
-          <Input
-            size="lg"
-            placeholder="Patient Name"
-            value={reportDetails.patientName}
-            onChange={handleChange}
-            name="patientName"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          /> */}
+          
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Doctor ID
           </Typography>
           <Input
             size="lg"
             placeholder="Doctor ID"
+            disabled
             value={reportDetails.doctorID}
             onChange={handleChange}
             name="doctorID"
@@ -104,20 +97,6 @@ function Report() {
             }}
           />
           
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Report Date
-          </Typography>
-          <Input
-            size="lg"
-            placeholder="Date"
-            value={reportDetails.reportDate}
-            onChange={handleChange}
-            name="reportDate"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Chief Complaint
           </Typography>
@@ -219,10 +198,9 @@ function Report() {
         </div>
         <Button
           type="submit"
-          className="mt-6"
-          color="lightBlue"
-          ripple="light"
-          fullWidth
+          className="mt-6 ml-24"
+          color="black"
+          ripple
         >
           Submit Report
         </Button>
@@ -237,82 +215,3 @@ function Report() {
 
 
 export default Report;
-
-// import React from 'react';
-// import { Card, Typography } from "@material-tailwind/react";
-// import styled, { keyframes } from 'styled-components';
-// import leftImage from '../../assets/left-image.jpg'; // Path to your left image
-// import rightImage from '../../assets/right-image.jpg'; // Path to your right image
-
-// const fadeInAnimation = keyframes`
-//   from {
-//     opacity: 0;
-//     transform: translateY(-20px);
-//   }
-//   to {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// `;
-
-// const AnimatedCard = styled(Card)`
-//   animation: ${fadeInAnimation} 0.5s ease-in-out;
-//   background-color: rgba(255, 255, 255, 0.8); /* White color with opacity */
-//   border: 2px solid #e0e0e0;
-//   border-radius: 10px;
-//   padding: 20px;
-//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-// `;
-
-// const LeftImage = styled.img`
-//   width: 200px; /* Increased width */
-//   height: auto;
-//   margin-right: 40px; /* Increased margin for spacing */
-// `;
-
-// const RightImage = styled.img`
-//   width: 200px; /* Increased width */
-//   height: auto;
-//   margin-left: 40px; /* Increased margin for spacing */
-// `;
-
-// const Report = () => {
-//   const report = {
-//     PatientID: 'PAT123',
-//     DoctorID: 'DOC456',
-//     ReportDate: '2024-04-10',
-//     ChiefComplaint: 'Headache',
-//     Symptoms: ['Headache', 'Nausea'],
-//     Tests: ['CT Scan', 'Blood Test'],
-//     Diagnosis: 'Migraine',
-//     Medications: ['Ibuprofen', 'Sumatriptan'],
-//     FollowUpInstructions: 'Rest and hydrate. Follow up in 1 week.',
-//     TreatmentDuration: '1 week',
-//   };
-
-//   return (
-//     <div className="flex items-center justify-center min-h-screen bg-blue-100">
-//       <LeftImage src={leftImage} alt="Left Image" />
-//       <div className="w-full lg:w-1/2 px-4 py-8">
-//         <AnimatedCard>
-//           <Typography tag="h1" className="text-3xl font-bold text-blue-800 mb-4 text-center">
-//             Medical Report
-//           </Typography>
-//           {Object.entries(report).map(([key, value]) => (
-//             <div key={key} className="mb-2">
-//               <Typography tag="p" className="text-lg font-semibold text-gray-800 text-center">
-//                 {key}
-//               </Typography>
-//               <Typography tag="p" className="text-lg text-gray-700 text-center">
-//                 {Array.isArray(value) ? value.join(', ') : value}
-//               </Typography>
-//             </div>
-//           ))}
-//         </AnimatedCard>
-//       </div>
-//       <RightImage src={rightImage} alt="Right Image" />
-//     </div>
-//   );
-// };
-
-// export default Report;

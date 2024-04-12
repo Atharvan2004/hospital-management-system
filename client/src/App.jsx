@@ -19,6 +19,7 @@ import Sprofile from "./pages/Staff/Profile";
 import DoctorDashboard from "./pages/Doctor/DoctorDashboard";
 import StaffDashboard from "./pages/Dashboard.jsx/StaffDashboard";
 import ReportDisplay from "./pages/Doctor/ReportDisplay";
+import SearchPatient from "./pages/Doctor/SearchPatient";
 
 function App() {
   return (
@@ -38,14 +39,16 @@ function App() {
         <Route path="/staff-profile/:id" element={<Sprofile/>} />
         <Route path="/Medicine-form" element={<MedicineForms/>} />
         <Route path="/Appointment" element={<Appointment/>} />
-        <Route path="/Report" element={<Report />} />
+        <Route path="/create-report/:id" element={<Report />} />
         <Route path="/doctor-dash" element={<DoctorDashboard/>} />
         <Route path="/patient-dash" element={<PatientDashboard/>} />
         <Route path="/staff-dash" element={<StaffDashboard/>} />
         <Route path="/report-display/:id" element={<ReportDisplay/>} />
+        <Route path="/search-patient" element={<SearchPatient/>} />
 
       </Routes>
       <Footer/>
+      
     </BrowserRouter>
   );
 }
