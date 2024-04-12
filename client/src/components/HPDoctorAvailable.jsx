@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 const Doctor = ({ name, image }) => {
   const [isAvailable, setIsAvailable] = useState(false);
@@ -21,12 +25,12 @@ const Doctor = ({ name, image }) => {
 
   return (
     <div
-      className="w-1/3 flex flex-col items-center relative"
+      className="w-full flex flex-col items-center relative"
       onMouseEnter={handleApproach}
       onMouseLeave={handleLeave}
       onMouseMove={handleHover}
     >
-      <div className="relative" >
+      <div className="relative">
         <img
           src={image}
           alt={name}
@@ -34,7 +38,7 @@ const Doctor = ({ name, image }) => {
           style={{ border: isHovered ? "2px solid blue" : "2px solid transparent" }}
         />
         {isAvailable && (
-          <div className="absolute inset-0  bg-opacity-75 flex justify-center items-center">
+          <div className="absolute inset-0 bg-opacity-75 flex justify-center items-center">
             <p className="text-white align-text-bottom">Available</p>
           </div>
         )}
@@ -56,14 +60,21 @@ const HPDoctorAvailable = () => {
     { id: 6, name: "Dr. Michael Davis", image: "/images/doc-6.jpg" },
   ];
 
-  const visibleDoctors = doctors.slice(0, 6);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  };
 
   return (
-    <div className="grid grid-cols-3 gap-8 justify-center">
-      {visibleDoctors.map((doctor) => (
+    <Slider {...settings}>
+      {doctors.map((doctor) => (
         <Doctor key={doctor.id} name={doctor.name} image={doctor.image} />
       ))}
-    </div>
+    </Slider>
   );
 };
+
 export default HPDoctorAvailable;

@@ -3,6 +3,7 @@ import SearchBar from "@/components/SearchBar";
 import Table from '@/components/Table'
 import HPDoctorAvailable from "@/components/HPDoctorAvailable";
 import SearchResult from "@/components/SearchResult";
+import ImageSlider from "@/components/ImageSlider";
 
 const HomePage = () => {
 
@@ -11,10 +12,19 @@ const HomePage = () => {
   // console.log(currentUser.age);
 
   return (
-    <div>
+    <div className="bg-gray-100"> {/* Apply the background color here */}
+      <div className="relative w-full">
+        {/* Your group content */}
+      <img
+        src="images/backGround.jpg"
+        alt="Image"
+        className="absolute top-0 right-0 w-64 h-64"
+      />
+    </div>
       <SearchBar />
       <div className="w-3/5 mx-auto mt-12">
         <Table />
+        
          {/* <div>{currentUser.age}</div>  */}
 
       </div>
@@ -61,12 +71,15 @@ const HomePage = () => {
         </div>
       </div>
       <div>
+        <ImageSlider/>
+      </div>
+      <div className="flex justify-center items-center h-screen"></div>
+      <div>
       <h1 className="text-5xl font-bold text-blue-600 flex justify-center items-center">About doctors</h1>
 
         <img src="\images\about-img.svg" alt="for contact us" className="h-auto w-full" />
 
       </div>
-      <SearchResult />
       <div className="flex w-1/2 justify-end items-center">
         <img src="\images\book-img.svg" alt="for contact us" className="h-auto w-full" />
         <h1 className="ml-4 text-2xl font-bold text-blue-600">Contact us !!</h1>
