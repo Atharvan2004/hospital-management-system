@@ -13,7 +13,7 @@ import SearchResult from "./components/SearchResult";
 import Dprofile from "./pages/Doctor/Profile";
 import Pprofile from "./pages/Patient/Profile";
 import MedicineForms from "./pages/Staff/MedicineForms";
-import Appointment from "./pages/Staff/Appointment";
+import Appointment from "./pages/Patient/Appointment";
 import Report from "./pages/Doctor/Report";
 import Sprofile from "./pages/Staff/Profile";
 import DoctorDashboard from "./pages/Doctor/DoctorDashboard";
@@ -38,7 +38,7 @@ function App() {
         <Route path="/patient-profile/:id" element={<Pprofile/>} />
         <Route path="/staff-profile/:id" element={<Sprofile/>} />
         <Route path="/Medicine-form" element={<MedicineForms/>} />
-        <Route path="/Appointment" element={<Appointment/>} />
+        <Route path="/appointment/:id" element={<Appointment/>} />
         <Route path="/create-report/:id" element={<Report />} />
         <Route path="/doctor-dash" element={<DoctorDashboard/>} />
         <Route path="/patient-dash" element={<PatientDashboard/>} />

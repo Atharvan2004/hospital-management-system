@@ -93,6 +93,13 @@ const PatientDashboard = () => {
     navigate(`/report-display/${reportId}`)
     
   };
+
+  const navigateToAppointment = (doctorId) => {
+    
+    console.log(`Navigating to Appointment with ID: ${doctorId}`);
+    navigate(`/appointment/${doctorId}`)
+    
+  };
   
 
   
@@ -119,7 +126,7 @@ const PatientDashboard = () => {
                               color="gray"
                               className="font-normal"
                             >
-                              Time: {appointment.time}   Date: {date} 
+                              Time: {appointment.time}   Date: {date} <div>status:🟢 {appointment.status}</div>
                             </Typography>
                           </div>
                         </ListItem>
@@ -166,7 +173,7 @@ const PatientDashboard = () => {
                       {doctors.map((doctor, index) => {
                         
                         return (
-                          <ListItem key={index}>
+                          <ListItem key={index} Button onClick={()=>navigateToAppointment(doctor._id)}>
                             <ListItemPrefix >⚕️</ListItemPrefix>
                             <div>
                               <Typography variant="h6" color="blue-gray">
