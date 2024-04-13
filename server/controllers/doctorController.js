@@ -117,6 +117,28 @@ const viewAppointment = asyncErrorHandler(async (req, res) => {
   }
 });
 
+const removeAppointment = asyncErrorHandler(async (req, res) => {
+
+  if (req.authenticated && req.user.role == "Doctor") {
+    try {
+      await Appointment.findByIdAndDelete(req.params.id).then(()=>{
+        res.status(201).json({
+          success: true,
+        });
+      })
+    } catch (err) {
+      res.status(400).json({
+        success: "false",
+        err: err.message,
+      });
+    }
+  } else {
+    res.status(300).json({
+      message: "Please login as a Doctor",
+    });
+  }
+});
+
 const editDoctor = asyncErrorHandler(async (req, res) => {
   if (req.authenticated) {
     try {
@@ -182,4 +204,4 @@ const editDoctor = asyncErrorHandler(async (req, res) => {
   }
 });
 
-export { searchTreatedPatients, createReport,viewAppointment };
+export { searchTreatedPatients, createReport,viewAppointment,removeAppointment,editDoctor };
