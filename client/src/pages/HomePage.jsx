@@ -3,6 +3,8 @@ import SearchBar from "@/components/SearchBar";
 import Table from "@/components/Table";
 import HPDoctorAvailable from "@/components/HPDoctorAvailable";
 import ImageSlider from "@/components/ImageSlider";
+import { Route } from "react-router-dom";
+import Contact from "./Contact";
 
 const HomePage = () => {
   return (
@@ -17,7 +19,10 @@ const HomePage = () => {
       <div className="bg-gray-100 py-10">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">Welcome to Our Hospital</h1>
-          <p className="text-lg text-center text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+          <p className="text-lg text-center text-gray-600">Welcome to Medilink, where your health and well-being are our top priorities. </p>
+          <p className="text-lg text-center text-gray-600"> Our dedicated team is here to provide you with the highest quality care and support,</p> 
+          <p className="text-lg text-center text-gray-600">ensuring that you receive personalized treatment to your needs.</p>
+          <p className="text-lg text-center text-gray-600"> We look forward to serving you and helping you achieve your health goals."</p>
         </div>
       </div>
       
@@ -71,20 +76,19 @@ const HomePage = () => {
         <span>Our Specialties</span>
       </h1>
     <ImageSlider />
-    <h1 className="text-center text-black font-bold relative text-4xl mt-8 mb-20">
-      <span>Our Team of Experts</span>
-    </h1>
-    <HPDoctorAvailable />
 
       <div className="flex justify-center items-center h-screen"></div>
       <div>
-        <h1 className="text-5xl font-bold text-blue-600 flex justify-center items-center">About Our Doctors</h1>
+        <h1 className="text-5xl font-bold text-blue-600 flex justify-center items-center">Our Team of Experts</h1>
         <img src="\images\about-img.svg" alt="for contact us" className="h-auto w-full" />
+        <HPDoctorAvailable />
       </div>
       <div className="flex w-1/2 justify-end items-center">
         <img src="\images\book-img.svg" alt="for contact us" className="h-auto w-full" />
-        <h1 className="ml-4 text-2xl font-bold text-blue-600">Contact Us</h1>
-      </div>
+        
+        
+        <a href="/contact" className="ml-4 text-2xl font-bold text-blue-600">Contact</a>
+        </div>
     </div>
   );
 };
