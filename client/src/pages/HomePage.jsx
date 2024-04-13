@@ -82,7 +82,7 @@ const HomePage = () => {
       </div>
       <div className="flex w-1/2 justify-end items-center">
         <img src="\images\book-img.svg" alt="for contact us" className="h-auto w-full" />
-        <h1 className="ml-4 text-2xl font-bold text-blue-600">Contact us !!</h1>
+        <a href="/contact" className="ml-4 text-2xl font-bold text-blue-600">Contact Us!!!</a>
 
       </div>
     </div>

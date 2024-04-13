@@ -10,7 +10,7 @@ const Contact = () => {
         <div className="mb-4 flex items-center">
           
           <span className="font-semibold">&#9742; &#65039; Phone:</span>
-          <span className="ml-2">9999999999</span>
+          <span className="ml-2">xxxxxxxxxx</span>
         </div>
         <div className="mb-4 flex items-center">
           
@@ -18,8 +18,7 @@ const Contact = () => {
           <span className="ml-2">xyz@email.com</span>
         </div>
         <p className="mb-4 text-sm text-gray-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula turpis ac ligula malesuada,
-          in condimentum libero convallis. Nullam nec est finibus, eleifend eros nec, commodo justo.
+        For urgent inquiries or technical support, our dedicated support team is available 24/7 to assist you with any issues regarding our hospital management system. Additionally, for general inquiries or feedback, we value your input and are committed to continuously improving our services to meet your needs effectively. Thank you for choosing our hospital management system; we look forward to serving you.
         </p>
       </div>
       {/* Image */}
