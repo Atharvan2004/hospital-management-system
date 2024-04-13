@@ -1,54 +1,63 @@
-import React, { useState } from 'react';
-import {
-  Card,
-  Input,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
-import { useParams } from 'react-router-dom';
+import React, { useState } from "react";
+import { Card, Input, Button, Typography } from "@material-tailwind/react";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios"; // Import axios for making HTTP requests
 
 function Report() {
-  const {id}= useParams()
+  const { id } = useParams();
   const { currentUser, loading, error } = useSelector((state) => state.doctor);
   const [reportDetails, setReportDetails] = useState({
-    patientID:id,
-      doctorID:currentUser._id,
-     
-      chiefComplaint:"",
-      symptoms:'',
-      tests:'',
-      diagnosis: '',
-      Prescription: '',
-      followUpInstructions: '',
-      treatmentDuration: '',
+    patientID: id,
+    doctorID: currentUser._id,
+    chiefComplaint: "",
+    symptoms: [],
+    tests: [],
+    diagnosis: "",
+    medications: [],
+    followUpInstructions: "",
+    treatmentDuration: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setReportDetails(prevDetails => ({
-      ...prevDetails,
-      [name]: value
-    }));
+    if (name === "symptoms" || name === "tests" || name === "medications") {
+      // Splitting the input value by comma and trimming each item
+      const itemsArray = value.split(",").map((item) => item.trim());
+      setReportDetails((prevDetails) => ({
+        ...prevDetails,
+        [name]: itemsArray,
+      }));
+    } else {
+      setReportDetails((prevDetails) => ({
+        ...prevDetails,
+        [name]: value,
+      }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission, e.g., save to database
-    console.log('Form submitted:', reportDetails);
-    // Reset form fields
-    setReportDetails({
-      patientID:id,
-      doctorID:currentUser._id,
-      
-      chiefComplaint:"",
-      symptoms:'',
-      tests:'',
-      diagnosis: '',
-      Prescription: '',
-      followUpInstructions: '',
-      treatmentDuration: '',
-    });
+    try {
+      const response = await axios.post(`http://localhost:3000/newReport/${id}`, {
+        formData:reportDetails,
+        token:localStorage.getItem("token")
+      });
+      console.log("Report submitted successfully:", response.data);
+      // Reset form fields
+      setReportDetails({
+        ...reportDetails,
+        chiefComplaint: "",
+        symptoms: [],
+        tests: [],
+        diagnosis: "",
+        medications: [],
+        followUpInstructions: "",
+        treatmentDuration: "",
+      });
+    } catch (error) {
+      console.error("Error submitting report:", error);
+    }
   };
 
   return (
@@ -63,9 +72,12 @@ function Report() {
       <Typography color="gray" className="mt-1 font-normal mx-auto">
         Fill out the patient report below
       </Typography>
-      <form onSubmit={handleSubmit} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 mx-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 mx-auto"
+      >
         <div className="mb-1 flex flex-col gap-6">
-        <Typography variant="h6" color="blue-gray" className="-mb-3">
+          <Typography variant="h6" color="blue-gray" className="-mb-3">
             Patient ID
           </Typography>
           <Input
@@ -80,7 +92,6 @@ function Report() {
               className: "before:content-none after:content-none",
             }}
           />
-          
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Doctor ID
           </Typography>
@@ -96,13 +107,12 @@ function Report() {
               className: "before:content-none after:content-none",
             }}
           />
-          
           <Typography variant="h6" color="blue-gray" className="-mb-3">
             Chief Complaint
           </Typography>
           <Input
             size="lg"
-            placeholder="chiefComplaint"
+            placeholder="Chief Complaint"
             value={reportDetails.chiefComplaint}
             onChange={handleChange}
             name="chiefComplaint"
@@ -112,12 +122,12 @@ function Report() {
             }}
           />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Symptoms
+            Symptoms (separated by commas)
           </Typography>
           <Input
             size="lg"
-            placeholder="symptoms"
-            value={reportDetails.symptoms}
+            placeholder="Symptoms"
+            value={reportDetails.symptoms.join(", ")}
             onChange={handleChange}
             name="symptoms"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
@@ -126,14 +136,28 @@ function Report() {
             }}
           />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Tests
+            Tests (separated by commas)
           </Typography>
           <Input
             size="lg"
             placeholder="Tests"
-            value={reportDetails.tests}
+            value={reportDetails.tests.join(", ")}
             onChange={handleChange}
             name="tests"
+            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+            labelProps={{
+              className: "before:content-none after:content-none",
+            }}
+          />
+          <Typography variant="h6" color="blue-gray" className="-mb-3">
+            Medications (separated by commas)
+          </Typography>
+          <Input
+            size="lg"
+            placeholder="Medications"
+            value={reportDetails.medications.join(", ")}
+            onChange={handleChange}
+            name="medications"
             className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
             labelProps={{
               className: "before:content-none after:content-none",
@@ -154,25 +178,11 @@ function Report() {
             }}
           />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
-            Prescription
+            Follow Up Instructions
           </Typography>
           <Input
             size="lg"
-            placeholder="Prescription"
-            value={reportDetails.prescription}
-            onChange={handleChange}
-            name="prescription"
-            className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-            labelProps={{
-              className: "before:content-none after:content-none",
-            }}
-          />
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-          Follow Up Instructions
-          </Typography>
-          <Input
-            size="lg"
-            placeholder="follow Up Instructions"
+            placeholder="Follow Up Instructions"
             value={reportDetails.followUpInstructions}
             onChange={handleChange}
             name="followUpInstructions"
@@ -182,7 +192,7 @@ function Report() {
             }}
           />
           <Typography variant="h6" color="blue-gray" className="-mb-3">
-          Treatment Duration
+            Treatment Duration
           </Typography>
           <Input
             size="lg"
@@ -194,24 +204,14 @@ function Report() {
             labelProps={{
               className: "before:content-none after:content-none",
             }}
-          />
-        </div>
-        <Button
-          type="submit"
-          className="mt-6 ml-24"
-          color="black"
-          ripple
-        >
+          />{" "}
+        </div>{" "}
+        <Button type="submit" className="mt-6 ml-24" color="black" ripple>
           Submit Report
         </Button>
       </form>
     </Card>
-
-
   );
 }
-
-
-
 
 export default Report;
