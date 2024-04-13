@@ -110,7 +110,7 @@ const PatientDashboard = () => {
                 <Typography className="mb-3 ml-2" variant="h4">Appointments</Typography>
                 <Card  className="w-96">
                   
-                  <List style={{maxHeight: '100%', overflow: 'auto'}}>
+                  <List className="max-h-[500px] overflow-y-auto">
                     {appointments.map((appointment, index) => {
                       var date = new Date(appointment.date);
                       date = date.toLocaleDateString();
@@ -139,7 +139,7 @@ const PatientDashboard = () => {
               <div className="body shadow-none bg-blue-gray-100 rounded-md mt-8 mr-10">
                 <Typography className="mb-3 ml-2" variant="h4">Your Reports</Typography>
                 <Card className="w-96">
-                  <List style={{maxHeight: '100%', overflow: 'auto'}}>
+                  <List className="max-h-[500px] overflow-y-auto">
                     {reports.map((report, index) => {
                       
                       return (
@@ -169,7 +169,7 @@ const PatientDashboard = () => {
                 <div className="body shadow-none bg-blue-gray-50  mt-8 mr-0">
                   <Typography className="mb-3 ml-2" variant="h4">Book Appointment</Typography>
                   <Card className="w-96">
-                    <List style={{maxHeight: '100%', overflow: 'auto'}}>
+                    <List className="max-h-[200px] overflow-y-auto">
                       {doctors.map((doctor, index) => {
                         
                         return (
