@@ -163,6 +163,7 @@ function Appointment() {
           </Typography>
           <Input
             size="lg"
+            type='date'
             placeholder="Date"
             value={appointment.date}
             onChange={handleChange}
