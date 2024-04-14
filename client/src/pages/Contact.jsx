@@ -1,5 +1,6 @@
 import React from "react";
 import contactImg from "../assets/contact.avif";
+import Footer from "@/components/Footer";
 const Contact = () => {
   return(
     <>
@@ -26,6 +27,7 @@ const Contact = () => {
       <img src={contactImg} alt="Hospital" className="rounded-md shadow-md" />
       </div>
     </div>
+    <Footer/>
     </>
   )
 };

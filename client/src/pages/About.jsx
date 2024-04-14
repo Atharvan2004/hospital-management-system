@@ -1,8 +1,10 @@
+import Footer from "@/components/Footer";
 import React from "react";
 
 const About = () => {
   return (
-    <div className="flex mt-40 ml-40 mr-80">
+    <>
+        <div className="flex mt-40 ml-40 mr-80">
       <div className="">
         <img
           src="/src/assets/contact.avif" // corrected the image source path
@@ -23,6 +25,9 @@ const About = () => {
         </p>
       </div>
     </div>
+      <Footer/>
+
+    </>
   );
 };
 
