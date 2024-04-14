@@ -47,7 +47,7 @@ function App() {
         <Route path="/search-patient" element={<SearchPatient/>} />
 
       </Routes>
-      <Footer/>
+      
       
     </BrowserRouter>
   );

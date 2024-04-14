@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useSelector } from "react-redux";
+import Footer from "@/components/Footer";
 
 const Dprofile = () => {
   const { currentUser, loading, error } = useSelector((state) => state.doctor);
@@ -132,6 +133,7 @@ const Dprofile = () => {
           </Typography>
         </form>
       </Card>
+      
     </div>
   );
 };

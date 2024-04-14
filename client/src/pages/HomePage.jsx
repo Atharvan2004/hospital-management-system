@@ -5,6 +5,7 @@ import HPDoctorAvailable from "@/components/HPDoctorAvailable";
 import ImageSlider from "@/components/ImageSlider";
 import { Route } from "react-router-dom";
 import Contact from "./Contact";
+import Footer from "@/components/Footer";
 
 const HomePage = () => {
   return (
@@ -89,7 +90,9 @@ const HomePage = () => {
         
         <a href="/contact" className="ml-4 text-2xl font-bold text-blue-600">Contact</a>
         </div>
+        <Footer/>
     </div>
+    
   );
 };
 
