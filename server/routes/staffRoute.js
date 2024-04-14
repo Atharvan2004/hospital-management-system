@@ -4,7 +4,7 @@ import { validateToken } from "../utils/genToken.js";
 
 const SRouter = express.Router();
 
-SRouter.route("/getMedicine").get(validateToken,getMedicine)  //done
+SRouter.route("/getMedicine").post(validateToken,getMedicine)  //done
 SRouter.route("/addMedicine").post(validateToken,addMedicine)  //done
 
 export default SRouter

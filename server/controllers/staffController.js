@@ -21,7 +21,7 @@ const getMedicine = asyncErrorHandler(async (req, res) => {
 const addMedicine = asyncErrorHandler(async (req, res) => {
   if (req.authenticated && req.user.role === "Staff") {
     try {
-      const { name, price, type, count } = req.body;
+      const { name, price, type, count } = req.body.formData;
 
       const oldMed = await Medicine.findOne({ name: name });
       if (oldMed) {
