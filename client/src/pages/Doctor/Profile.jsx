@@ -42,7 +42,7 @@ const Dprofile = () => {
   };
 
   return(
-    <div className="text-center bg-brown-200">
+    <div className="text-center">
       <Card color="transparent" shadow={false}>
         <Typography variant="h4" color="blue-gray">
           Profile
@@ -50,7 +50,7 @@ const Dprofile = () => {
         <Typography color="gray" className="mt-1 font-normal">
           Specialisation in Medicine, Office 304
         </Typography>
-        <img src="\images\download.jpg" alt="Patient Image" className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2' />
+        <img src="\images\download.jpg" alt="Patient Image" className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2 border-2 border-cyan-400' />
         <form className="mx-auto mt-8 mb-2 w-80 max-w-screen-lg sm:w-96 bg-gray-300 rounded-xl">
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
