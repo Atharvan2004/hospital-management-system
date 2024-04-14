@@ -1,7 +1,9 @@
+import SLayout from "@/components/SLayout";
+
 function StaffDashboard() {
     return (  
         <>
-        s
+        <SLayout/>
         </>
     );
 }
