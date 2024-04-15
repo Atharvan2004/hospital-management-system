@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+} from "@material-tailwind/react";
 
 const Doctor = ({ name, image }) => {
   const [isAvailable, setIsAvailable] = useState(false);
@@ -35,7 +42,9 @@ const Doctor = ({ name, image }) => {
           src={image}
           alt={name}
           className="w-32 h-32 rounded-t-lg object-cover"
-          style={{ border: isHovered ? "2px solid blue" : "2px solid transparent" }}
+          style={{
+            border: isHovered ? "2px solid blue" : "2px solid transparent",
+          }}
         />
         {isAvailable && (
           <div className="absolute inset-0 bg-opacity-75 flex justify-center items-center">
@@ -52,26 +61,40 @@ const Doctor = ({ name, image }) => {
 
 const HPDoctorAvailable = () => {
   const doctors = [
-    { id: 1, name: "Dr. John Doe", image: "/images/doc-1.jpg" },
-    { id: 2, name: "Dr. Jane Smith", image: "/images/doc-2.jpg" },
-    { id: 3, name: "Dr. Alice Johnson", image: "/images/doc-3.jpg" },
-    { id: 4, name: "Dr. Bob Williams", image: "/images/doc-4.jpg" },
-    { id: 5, name: "Dr. Sarah Brown", image: "/images/doc-5.jpg" },
-    { id: 6, name: "Dr. Michael Davis", image: "/images/doc-6.jpg" },
+    { id: 1, name: "Dr. Jane Smith", image: "/images/doc-1.jpg" },
+    { id: 2, name: "Dr. John Doe", image: "/images/doc-2.jpg" },
+    { id: 3, name: "Dr. Mark Johnson", image: "/images/doc-3.jpg" },
+    { id: 4, name: "Dr. Dong Lee", image: "/images/doc-4.jpg" },
+    { id: 5, name: "Dr. David Brown", image: "/images/doc-5.jpg" },
+    { id: 6, name: "Dr. Emily White", image: "/images/doc-6.jpg" }
+    
   ];
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay:true
   };
 
   return (
-    <Slider {...settings}>
+    <Slider className="" {...settings}>
       {doctors.map((doctor) => (
-        <Doctor key={doctor.id} name={doctor.name} image={doctor.image} />
+        <Card key={doctor.id} className="mt-6 w-10 bg-brown-50 mx-auto ">
+        <CardBody className="mx-auto">
+            <img className="w-40 h-40 mx-auto"
+              src={doctor.image}
+              alt="card-image"
+            />
+          
+            <Typography variant="h5" color="blue-gray" className="mb-1 mx-auto pl-36 mt-5">
+             {doctor.name}
+            </Typography>
+            
+          </CardBody>
+        </Card>
       ))}
     </Slider>
   );

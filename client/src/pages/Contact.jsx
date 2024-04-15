@@ -11,12 +11,12 @@ const Contact = () => {
         <div className="mb-4 flex items-center">
           
           <span className="font-semibold">&#9742; &#65039; Phone:</span>
-          <span className="ml-2">xxxxxxxxxx</span>
+          <span className="ml-2">+91 9000200005</span>
         </div>
         <div className="mb-4 flex items-center">
           
           <span className="font-semibold">&#9993; Email:</span>
-          <span className="ml-2">xyz@email.com</span>
+          <span className="ml-2">MediLink@ac.in</span>
         </div>
         <p className="mb-4 text-sm text-gray-700">
         For urgent inquiries or technical support, our dedicated support team is available 24/7 to assist you with any issues regarding our hospital management system. Additionally, for general inquiries or feedback, we value your input and are committed to continuously improving our services to meet your needs effectively. Thank you for choosing our hospital management system; we look forward to serving you.

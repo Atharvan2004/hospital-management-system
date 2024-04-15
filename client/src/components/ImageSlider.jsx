@@ -47,19 +47,13 @@ const Service = ({ src, alt, heading, paragraph }) => {
 
 
 const ImageSlider = () => {
-  const images = [
-    { id: 1, src: "/images/serv1.png", alt: "Service 1", heading: "MediLink", paragraph: "Where compassion meets excellence in healthcare – Medilink, your partner in wellness" },
-    { id: 2, src: "/images/serv2.png", alt: "Service 2", heading: "Eye Specialist", paragraph: "Experience clear vision and exceptional care with our specialized eye services." },
-    { id: 3, src: "/images/serv3.png", alt: "Service 3", heading: "Dispensary", paragraph: "Our dispensary provides a wide range of medications and pharmaceutical services, ensuring you receive the right treatment and care.." },
-    { id: 4, src: "/images/serv4.png", alt: "Service 4", heading: "Neuro Surgery", paragraph: "Our neurosurgery team delivers expert care for complex brain and spinal conditions." },
-    { id: 5, src: "/images/serv5.png", alt: "Service 5", heading: "Pathology", paragraph: "Pathology plays a crucial role in the diagnosis and treatment of diseases" },
-  ];
+  
 
   return (
-    <Carousel className="rounded-xl">
+    <Carousel autoplay loop autoplayDelay={2000} className="rounded-xl">
       <div className="relative h-full w-full">
         <img
-          src="https://th.bing.com/th/id/OIP.1neMKkN9uz3Qze-BaXAMKgHaEL?w=295&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+          src="https://wallpaperaccess.com/full/4433980.jpg"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
@@ -85,7 +79,7 @@ const ImageSlider = () => {
       </div>
       <div className="relative h-full w-full">
         <img
-          src="https://plus.unsplash.com/premium_photo-1682308449346-0d68b4e3f3fe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhcmRpb2xvZ3l8ZW58MHx8MHx8fDA%3D"
+          src="https://wallpaperaccess.com/full/4088661.jpg"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
@@ -110,7 +104,7 @@ const ImageSlider = () => {
       </div>
       <div className="relative h-full w-full">
         <img
-          src="https://media.istockphoto.com/id/1477483038/photo/doctors-nurse-or-laptop-in-night-healthcare-planning-research-or-surgery-teamwork-in-wellness.webp?b=1&s=170667a&w=0&k=20&c=pZ-HGH5Ri8gs9lXj6r1nuVIsO43cNa5Uh4zKb5CS52A="
+          src="https://wallpaperaccess.com/full/4433940.jpg"
           alt="image 3"
           className="h-full w-full object-cover"
         />
@@ -140,3 +134,4 @@ const ImageSlider = () => {
 };
 
 export default ImageSlider;
+
