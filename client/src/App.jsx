@@ -20,6 +20,7 @@ import DoctorDashboard from "./pages/Doctor/DoctorDashboard";
 import StaffDashboard from "./pages/Dashboard.jsx/StaffDashboard";
 import ReportDisplay from "./pages/Doctor/ReportDisplay";
 import SearchPatient from "./pages/Doctor/SearchPatient";
+import SearchDoctor from "./pages/Patient/SearchDoctor";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <Route path="/staff-dash" element={<StaffDashboard/>} />
         <Route path="/report-display/:id" element={<ReportDisplay/>} />
         <Route path="/search-patient" element={<SearchPatient/>} />
+        <Route path="/search-doctor" element={<SearchDoctor/>} />
 
       </Routes>
       

@@ -22,9 +22,9 @@ const Layout = ({ children }) => {
       onclick: logoutUser,
     },
     {
-      name: "Appointments",
-      path: "/appointments",
-      icon: "fa-solid fa-list",
+      name: "Search Doctor",
+      path: "/search-doctor",
+      icon: "fa-solid fa-user-doctor",
     },
 
     {
