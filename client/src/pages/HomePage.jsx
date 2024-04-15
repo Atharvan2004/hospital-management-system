@@ -86,7 +86,7 @@ const HomePage = () => {
       </div>
       </div>
 
-      <h1 className="text-center text-black font-bold relative text-4xl mt-8">
+      <h1 className="text-center text-black font-bold relative text-5xl mt-8">
         <span>Our Specialties</span>
       </h1>
     <ImageSlider />
@@ -104,8 +104,8 @@ const HomePage = () => {
     <div>
       <img src="\images\book-img.svg" alt="for contact us" className="mx-auto" />
     </div>
-    <div >
-      <a href="/contact" className="ml-4 text-5xl font-bold text-blue-00">Contact</a>
+    <div className=" text-2xl bg-gradient-to-r from-yellow-100 to-purple-600" >
+    <h2>Our greatest weakness lies in giving up. The most certain way to succeed is always to just try one more time.</h2>
     </div>
   </div>
 </div>
