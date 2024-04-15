@@ -41,6 +41,27 @@ const Layout = ({ children }) => {
     },
   ];
   const [appointments, setAppointments] = useState([]);
+
+
+  const handleRemove= async(id)=>{
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/removeAppointment/${id}`,
+        {
+          token:localStorage.getItem("token"),
+        }
+      ).then(()=>{
+        alert("Removed appointment")
+        window.location.reload();
+      });
+    } catch (error) {
+      console.error("error while removing ",error);
+    }
+
+  }
+
+
+
   useEffect(() => {
     console.log(currentUser);
     async function fetchData() {
@@ -59,6 +80,8 @@ const Layout = ({ children }) => {
     }
     fetchData();
   }, []);
+
+
   const location = useLocation();
 
   return (
@@ -150,7 +173,10 @@ const Layout = ({ children }) => {
                               Time: {appointment.time} Date: {date}
                             </Typography>
                           </div>
+                          
+                          <Button className="bg-brown-200 hover:bg-brown-600 ml-auto" onClick={() => handleRemove(appointment._id)}> Remove</Button>
                         </ListItem>
+                        
                       );
                     })}
                   </List>
