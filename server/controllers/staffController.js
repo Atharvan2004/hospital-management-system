@@ -25,7 +25,8 @@ const addMedicine = asyncErrorHandler(async (req, res) => {
 
       const oldMed = await Medicine.findOne({ name: name });
       if (oldMed) {
-        oldMed.count += count;
+        const newCount = parseInt(count, 10);
+        oldMed.count += newCount;
         oldMed.save();
         res.status(201).json({
           success: true,

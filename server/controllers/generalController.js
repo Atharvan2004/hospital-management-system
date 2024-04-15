@@ -170,6 +170,33 @@ const getDoctors = asyncErrorHandler(async (req, res) => {
   }
 });
 
+const searchDoctors = asyncErrorHandler(async (req, res) => {
+  try {
+    const query = req.body.query;
+    const model = req.body.model;
+    const doctorList = await findByQuery(query, model).catch((err) => {
+      console.log(err);
+    });
+    console.log(doctorList);
+    if (doctorList != null) {
+      res.status(201).json({
+        success: true,
+        doctorList,
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: "No patients found",
+      });
+    }
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      err,
+    });
+  }
+});
+
 export {
   searchPatients,
   getPatient,
@@ -177,4 +204,5 @@ export {
   viewProfile,
   loginAdmin,
   getDoctors,
+  searchDoctors
 };
