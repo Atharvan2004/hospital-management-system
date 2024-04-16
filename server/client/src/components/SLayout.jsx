@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import  TableMedicine  from "./Table";
-import baseURL from "port";
+import baseURL from "../../port";
 
 const SLayout = ({ children }) => {
   const { currentUser, loading, error } = useSelector((state) => state.staff);

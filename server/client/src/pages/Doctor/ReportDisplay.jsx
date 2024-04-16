@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, Typography, Button } from "@material-tailwind/react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import baseURL from "port";
+import baseURL from "../../../port";
 
 const MedicalReport = () => {
   const { id } = useParams();

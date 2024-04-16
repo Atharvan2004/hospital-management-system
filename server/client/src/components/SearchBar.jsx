@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Input, Button } from "@material-tailwind/react";
 import { changeData } from "@/store/slices/searchResult";
-import baseURL from "port";
+import baseURL from "../../port";
 
 export default function InputWithButton() {
   const [name, setName] = useState("");
