@@ -8,8 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "start": "concurrently \"npm run start:client\" \"npm run start:server\"",
-    "client": "cd ./client && npm i && npm run build",
-    "server": "npm i && npm run dev"
+    "build": "npm i && cd client && npm i && npm run build"
   },
   "keywords": [],
   "author": "",
