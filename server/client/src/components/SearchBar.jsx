@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { Input, Button } from "@material-tailwind/react";
 import { changeData } from "@/store/slices/searchResult";
+import baseURL from "port";
 
 export default function InputWithButton() {
   const [name, setName] = useState("");
@@ -12,7 +13,7 @@ export default function InputWithButton() {
     try {
       console.log(name)
       const result = await axios
-        .post("http://localhost:3000/search", {body:{ query: name }})
+        .post(`${baseURL}/search`, {body:{ query: name }})
         .catch((err) => {
           console.log(err);
         });

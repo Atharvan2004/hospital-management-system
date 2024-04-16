@@ -16,6 +16,7 @@ import {
   CardFooter,
   Typography,
 } from "@material-tailwind/react";
+import baseURL from "port";
 
 const Layout = ({ children }) => {
   const { currentUser, loading, error } = useSelector((state) => state.doctor);
@@ -46,7 +47,7 @@ const Layout = ({ children }) => {
   const handleRemove= async(id)=>{
     try {
       const response = await axios.post(
-        `http://localhost:3000/removeAppointment/${id}`,
+        `${baseURL}/removeAppointment/${id}`,
         {
           token:localStorage.getItem("token"),
         }
@@ -67,7 +68,7 @@ const Layout = ({ children }) => {
     async function fetchData() {
       try {
         const response = await axios.post(
-          "http://localhost:3000/viewAppointment",
+          `${baseURL}/viewAppointment`,
           {
             token: localStorage.getItem("token"),
           }

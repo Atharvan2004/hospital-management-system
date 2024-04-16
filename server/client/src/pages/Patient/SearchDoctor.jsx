@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useNavigate } from 'react-router-dom'
+import baseURL from "port";
 
 
 function SearchDoctor() {
@@ -22,7 +23,7 @@ function SearchDoctor() {
     try {
       console.log(name);
       const result = await axios
-        .post("http://localhost:3000/searchDoctor", { query: name, model: "Doctor" })
+        .post(`${baseURL}/searchDoctor`, { query: name, model: "Doctor" })
         .catch((err) => {
           console.log(err);
         });

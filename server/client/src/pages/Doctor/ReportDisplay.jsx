@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, Typography, Button } from "@material-tailwind/react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import baseURL from "port";
 
 const MedicalReport = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const MedicalReport = () => {
     async function fetchData() {
       try {
         const response = await axios.post(
-          `http://localhost:3000/getReport/${id}`,
+          `${baseURL}/getReport/${id}`,
           {
             token: localStorage.getItem("token"),
           }

@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios, { Axios } from 'axios';
 import { useNavigate } from 'react-router-dom/dist';
+import baseURL from 'port';
 
 
 function Appointment() {
@@ -69,7 +70,7 @@ function Appointment() {
   
     try {
       const response = await axios.post(
-        `http://localhost:3000/bookAppointment/${id}`,
+        `${baseURL}/bookAppointment/${id}`,
         appointment,
         config
       );

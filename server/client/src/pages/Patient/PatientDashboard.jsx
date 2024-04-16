@@ -16,6 +16,7 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
+import baseURL from "port";
 
 
 
@@ -35,7 +36,7 @@ const PatientDashboard = () => {
   const fetchAppointmets = async()=>{
     try {
       const response = await axios.post(
-        "http://localhost:3000/getAppointment",
+        `${baseURL}/getAppointment`,
         {
           token: localStorage.getItem("token"),
         }
@@ -50,7 +51,7 @@ const PatientDashboard = () => {
   const fetchReports= async ()=>{
     try {
       const response = await axios.post(
-        "http://localhost:3000/getReports",
+        `${baseURL}/getReports`,
         {
           token: localStorage.getItem("token"),
         }
@@ -66,7 +67,7 @@ const PatientDashboard = () => {
   const fetchDoctors =async ()=>{
     try {
       const response = await axios.post(
-        "http://localhost:3000/getDoctors",
+        `${baseURL}/getDoctors`,
         {
           token: localStorage.getItem("token"),
         }

@@ -7,8 +7,6 @@ import GRouter from "./routes/generalRoute.js";
 import SRouter from "./routes/staffRoute.js";
 import cookieParser from "cookie-parser";
 import { DRouter } from "./routes/doctorRoute.js";
-import path from "path"
-
 
 const app = express();
 const port = process.env.PORT || 3000;

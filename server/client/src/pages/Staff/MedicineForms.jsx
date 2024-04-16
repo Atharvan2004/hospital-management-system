@@ -3,6 +3,7 @@ import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import baseURL from "port";
 
 function MedicineForms() {
   const [medicineDetails, setMedicineDetails] = useState({
@@ -15,7 +16,7 @@ function MedicineForms() {
 
   const submit = async () => {
     console.log(medicineDetails);
-    const response = await axios.post("http://localhost:3000/addMedicine", {
+    const response = await axios.post( `${baseURL}/addMedicine`, {
       formData: medicineDetails,
       token: localStorage.getItem("token"),
     }).then((response)=>{

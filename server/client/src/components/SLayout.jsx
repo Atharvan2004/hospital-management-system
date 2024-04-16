@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import  TableMedicine  from "./Table";
+import baseURL from "port";
 
 const SLayout = ({ children }) => {
   const { currentUser, loading, error } = useSelector((state) => state.staff);
@@ -45,7 +46,7 @@ const SLayout = ({ children }) => {
     async function fetchData() {
       try {
         const response = await axios.post(
-          "http://localhost:3000/getMedicine",
+          `${baseURL}/getMedicine`,
           {
             token: localStorage.getItem("token"),
           }

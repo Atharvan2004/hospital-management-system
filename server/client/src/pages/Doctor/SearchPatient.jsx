@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useNavigate } from 'react-router-dom';
+import baseURL from "port";
 
 function SearchPatient() {
     const [name, setName] = useState("");
@@ -20,7 +21,7 @@ function SearchPatient() {
     try {
       console.log(name);
       const result = await axios
-        .post("http://localhost:3000/search", { query: name, model: "Patient" })
+        .post(`${baseURL}/search`, { query: name, model: "Patient" })
         .catch((err) => {
           console.log(err);
         });
