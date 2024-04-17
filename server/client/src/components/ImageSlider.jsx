@@ -51,7 +51,7 @@ const ImageSlider = () => {
 
   return (
     <Carousel autoplay loop autoplayDelay={2000} className="rounded-xl">
-      <div className="relative h-full w-full">
+      <div className="relative h-4/6 w-full">
         <img
           src="https://wallpaperaccess.com/full/4433980.jpg"
           className="h-full w-full object-cover"
