@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 const Contact = () => {
   return(
     <>
-         <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen bg-blue-50">
+     <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen bg-blue-50">
       {/* Contact Information */}
       <div className="bg-white p-6 rounded-md shadow-md max-w-md w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mb-4 lg:mb-0">
         <h1 className="text-3xl font-bold mb-4">Contact Us</h1>

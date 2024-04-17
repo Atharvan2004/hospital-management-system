@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
     {
       name: "Logout",
       path: "/",
-      icon: "fa-solid fa-house",
+      icon: "fa-solid fa-sign-out",
       onClick: logoutUser,
     },
     {

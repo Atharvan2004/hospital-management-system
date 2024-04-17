@@ -14,7 +14,7 @@ const HPDoctorAvailable = () => {
   ];
 
   return (
-    <Carousel loop autoplay autoplayDelay={2000} className="">
+    <Carousel loop autoplay autoplayDelay={3000} className="">
       {doctors.map((doctor) => (
         <Card key={doctor.id} className="w-1/5 bg-brown-50 mx-auto">
           <CardBody className="mx-auto">
