@@ -26,7 +26,7 @@ export default function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           Pages
         </a>
       </Typography>
@@ -36,8 +36,8 @@ export default function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Account
+        <a href="about" className="flex items-center">
+          About
         </a>
       </Typography>
       <Typography
@@ -46,8 +46,8 @@ export default function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Blocks
+        <a href="contact" className="flex items-center">
+          Contact Us
         </a>
       </Typography>
       <Typography
@@ -56,7 +56,7 @@ export default function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="/login" className="flex items-center">
           Docs
         </a>
       </Typography>
