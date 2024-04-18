@@ -26,17 +26,7 @@ export default function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="/" className="flex items-center">
-          Pages
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="about" className="flex items-center">
+        <a href="/about" className="flex items-center">
           About
         </a>
       </Typography>
@@ -46,7 +36,7 @@ export default function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="contact" className="flex items-center">
+        <a href="/contact" className="flex items-center">
           Contact Us
         </a>
       </Typography>
@@ -56,46 +46,57 @@ export default function StickyNavbar() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="/login" className="flex items-center">
+        <a href="https://github.com/Atharvan2004/hospital-management-system" className="flex items-center">
           Docs
         </a>
       </Typography>
     </ul>
   );
 
+  const logoutFunc = () => {
+    console.log("Logout");
+    localStorage.setItem("token", "");
+  };
+
   return (
-    <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-4 mb-3
-     lg:px-8 lg:py-4">
+    <Navbar
+      className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-4 mb-3
+     lg:px-8 lg:py-4"
+    >
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="/"
           className="mr-4 cursor-pointer py-1.5 font-bold text-3xl pl-1"
+          onClick={logoutFunc}
         >
           MediLink
         </Typography>
         <div className="flex items-center gap-4">
           <div className="mr-4 hidden text-xl lg:block">{navList}</div>
-          <div className="flex items-center gap-x-1">
-            <a href="/login">
-              <Button
-                variant="text"
-                size="sm"
-                className="hidden lg:inline-block"
-              >
-                <span>Log In</span>
-              </Button>
-            </a>
-            <a href="/signup">
-              <Button
-                variant="gradient"
-                size="sm"
-                className="hidden lg:inline-block"
-              >
-                <span>Sign up</span>
-              </Button>
-            </a>
-          </div>
+          {localStorage.getItem("token")=="" ? (
+            <div className="flex items-center gap-x-1">
+              <a href="/login">
+                <Button
+                  variant="text"
+                  size="sm"
+                  className="hidden lg:inline-block"
+                >
+                  <span>Log In</span>
+                </Button>
+              </a>
+              <a href="/signup">
+                <Button
+                  variant="gradient"
+                  size="sm"
+                  className="hidden lg:inline-block"
+                >
+                  <span>Sign up</span>
+                </Button>
+              </a>
+            </div>
+          ) : null}
+
           <IconButton
             variant="text"
             className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -149,4 +150,3 @@ export default function StickyNavbar() {
     </Navbar>
   );
 }
-

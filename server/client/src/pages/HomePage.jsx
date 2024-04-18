@@ -1,10 +1,6 @@
 import React from "react";
-import SearchBar from "@/components/SearchBar";
-import Table from "@/components/Table";
 import HPDoctorAvailable from "@/components/HPDoctorAvailable";
 import ImageSlider from "@/components/ImageSlider";
-import { Route } from "react-router-dom";
-import Contact from "./Contact";
 import Footer from "@/components/Footer";
 import {
   Card,
@@ -47,7 +43,7 @@ const HomePage = () => {
     <div className="bg-gradient-to-r from-teal-50 to-green-200">
       <a href="/contact">
         <h1
-          className="fixed text-red-600 z-20"
+          className="fixed text-red-600 z-20 bg-yellow-50 bg-opacity-50 drop-shadow-md shadow-black rounded-t-lg px-4 pt-3"
           style={{
             transform: "rotate(90deg)",
             transformOrigin: "bottom left",
@@ -224,6 +220,7 @@ const HomePage = () => {
               className="hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
               ripple={false}
               fullWidth={true}
+              onClick={handleClick}
             >
               Join Now
             </Button>
@@ -287,6 +284,7 @@ const HomePage = () => {
               className="hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
               ripple={false}
               fullWidth={true}
+              onClick={handleClick}
             >
              Request Nurse
             </Button>
