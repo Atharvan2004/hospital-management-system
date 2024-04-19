@@ -122,12 +122,12 @@ const Dprofile = () => {
             />
           </div>
           
-          <Button className="mt-6" fullWidth>
+          {/* <Button className="mt-6" fullWidth>
             Update
-          </Button>
+          </Button> */}
           <Typography color="gray" className="mt-4 text-center font-normal">
             Already have an account?{" "}
-            <a href="#" className="font-medium text-gray-900">
+            <a href="/login" className="font-medium text-gray-900">
               Sign In
             </a>
           </Typography>

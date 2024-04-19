@@ -28,7 +28,8 @@ export default function SignUpForm() {
     }
   ];
   return (
-    <div className="w-2/5 mx-auto text-xl mt-6">
+    <div className="w-2/5 mx-auto text-xl mt-6 ">
+      <div className="text-center mb-4 text-red-300">Login As an Admin to Register New Users</div>
       <Tabs value="html">
       <TabsHeader>
         {data.map(({ label, value }) => (
