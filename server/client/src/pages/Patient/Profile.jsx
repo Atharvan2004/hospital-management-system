@@ -133,7 +133,7 @@ const Pprofile = () => {
         </a>
       </Typography>
     </form>
-  </Card>
+  </Card>  
     </div>
   
   );
