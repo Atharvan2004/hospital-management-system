@@ -150,10 +150,10 @@ const LoginForm = () => {
             Sign up
           </Typography>
         </Typography>
-        <Typography variant="small" className="mt-6 flex justify-center text-gray-700">
-          Use this credentials to test the app:
-          Doctor, u:emily, p:emily
-          Patient, u:michael, p:michael
+        <Typography variant="small" className="mt-6 flex justify-center text-gray-400">
+          Use this credentials to test the app:<br />
+          Doctor, u:emily, p:emily<br />
+          Patient, u:michael, p:michael<br />
           Staff, u:alice, p:alice
         </Typography>
       </CardFooter>
